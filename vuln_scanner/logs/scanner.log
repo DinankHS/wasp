@@ -1,0 +1,956 @@
+[2026-04-24 16:35:41] INFO     main — Target: http://localhost
+[2026-04-24 16:35:41] INFO     main — Output format: both
+[2026-04-24 16:35:41] INFO     main — Crawler depth: 3
+[2026-04-24 16:35:41] INFO     main — [ ] Crawler      — coming Day 2
+[2026-04-24 16:35:41] INFO     main — [ ] SQLi scanner — coming Day 3
+[2026-04-24 16:35:41] INFO     main — [ ] XSS scanner  — coming Day 4
+[2026-04-24 16:35:41] INFO     main — [ ] Port scanner — coming Day 5
+[2026-04-24 16:35:41] INFO     main — [ ] Reporter     — coming Day 6
+[2026-04-24 16:42:41] INFO     scanner.crawler — Starting crawl: http://localhost (max depth=2)
+[2026-04-24 16:42:41] INFO     scanner.crawler — [depth=0] Crawling: http://localhost
+[2026-04-24 16:42:45] WARNING  scanner.crawler — Connection error: http://localhost
+[2026-04-24 16:42:45] INFO     scanner.crawler — Crawl complete. 0 URLs found, 1 errors.
+[2026-04-24 16:45:48] INFO     scanner.crawler — Starting crawl: http://testphp.vulnweb.com (max depth=2)
+[2026-04-24 16:45:48] INFO     scanner.crawler — [depth=0] Crawling: http://testphp.vulnweb.com
+[2026-04-24 16:45:59] WARNING  scanner.crawler — Timeout fetching: http://testphp.vulnweb.com
+[2026-04-24 16:45:59] INFO     scanner.crawler — Crawl complete. 0 URLs found, 1 errors.
+[2026-04-24 16:50:59] INFO     scanner.crawler — Starting crawl: http://testphp.vulnweb.com (max depth=2)
+[2026-04-24 16:50:59] INFO     scanner.crawler — [depth=0] Crawling: http://testphp.vulnweb.com
+[2026-04-24 16:51:09] WARNING  scanner.crawler — Timeout fetching: http://testphp.vulnweb.com
+[2026-04-24 16:51:09] INFO     scanner.crawler — Crawl complete. 0 URLs found, 1 errors.
+[2026-04-24 16:51:39] INFO     scanner.crawler — Starting crawl: http://localhost (max depth=2)
+[2026-04-24 16:51:39] INFO     scanner.crawler — [depth=0] Crawling: http://localhost
+[2026-04-24 16:51:39] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-24 16:54:55] INFO     scanner.crawler — Starting crawl: http://localhost/dvwa (max depth=2)
+[2026-04-24 16:54:55] INFO     scanner.crawler — [depth=0] Crawling: http://localhost/dvwa
+[2026-04-24 16:54:55] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/dvwa?C=N;O=D
+[2026-04-24 16:54:56] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/dvwa?C=M;O=A
+[2026-04-24 16:54:56] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/dvwa?C=S;O=A
+[2026-04-24 16:54:57] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/dvwa?C=D;O=A
+[2026-04-24 16:54:57] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/
+[2026-04-24 16:54:58] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/css/
+[2026-04-24 16:54:58] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/images/
+[2026-04-24 16:54:58] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/includes/
+[2026-04-24 16:54:58] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/js/
+[2026-04-24 16:54:58] INFO     scanner.crawler — [depth=2] Crawling: http://localhost/dvwa?C=N;O=A
+[2026-04-24 16:54:58] INFO     scanner.crawler — [depth=2] Crawling: http://localhost/dvwa?C=M;O=D
+[2026-04-24 16:54:58] INFO     scanner.crawler — [depth=2] Crawling: http://localhost/dvwa?C=S;O=D
+[2026-04-24 16:54:58] INFO     scanner.crawler — [depth=2] Crawling: http://localhost/dvwa?C=D;O=D
+[2026-04-24 16:54:58] INFO     scanner.crawler — Crawl complete. 10 URLs found, 0 errors.
+[2026-04-27 12:57:31] INFO     main — Cookies loaded: ['PHPSESSID', 'security']
+[2026-04-27 13:04:55] INFO     main — Cookies loaded: ['PHPSESSID', 'security']
+[2026-04-27 13:05:32] INFO     main — Cookies loaded: ['PHPSESSID', 'security']
+[2026-04-27 13:05:32] INFO     scanner.crawler — Starting crawl: http://localhost/dvwa (max depth=3)
+[2026-04-27 13:05:32] INFO     scanner.crawler — [depth=0] Crawling: http://localhost/dvwa
+[2026-04-27 13:05:37] WARNING  scanner.crawler — Connection error: http://localhost/dvwa
+[2026-04-27 13:05:37] INFO     scanner.crawler — Crawl complete. 0 URLs found, 1 errors.
+[2026-04-27 13:14:46] INFO     main — Cookies loaded: ['PHPSESSID', 'security']
+[2026-04-27 13:14:46] INFO     scanner.crawler — Starting crawl: http://localhost/dvwa (max depth=3)
+[2026-04-27 13:14:46] INFO     scanner.crawler — [depth=0] Crawling: http://localhost/dvwa
+[2026-04-27 13:14:46] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/dvwa?C=N;O=D
+[2026-04-27 13:14:47] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/dvwa?C=M;O=A
+[2026-04-27 13:14:48] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/dvwa?C=S;O=A
+[2026-04-27 13:14:48] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/dvwa?C=D;O=A
+[2026-04-27 13:14:49] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/
+[2026-04-27 13:14:49] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/css/
+[2026-04-27 13:14:49] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/images/
+[2026-04-27 13:14:49] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/includes/
+[2026-04-27 13:14:49] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/js/
+[2026-04-27 13:14:49] INFO     scanner.crawler — [depth=2] Crawling: http://localhost/dvwa?C=N;O=A
+[2026-04-27 13:14:50] INFO     scanner.crawler — [depth=2] Crawling: http://localhost/dvwa?C=M;O=D
+[2026-04-27 13:14:50] INFO     scanner.crawler — [depth=2] Crawling: http://localhost/dvwa?C=S;O=D
+[2026-04-27 13:14:51] INFO     scanner.crawler — [depth=2] Crawling: http://localhost/dvwa?C=D;O=D
+[2026-04-27 13:14:51] INFO     scanner.crawler — Crawl complete. 10 URLs found, 0 errors.
+[2026-04-27 13:14:51] INFO     scanner.sqli — SQLi scan started. 8 injectable URL(s) to probe.
+[2026-04-27 13:14:51] INFO     scanner.sqli — Scanning: http://localhost/dvwa?C=N;O=D
+[2026-04-27 13:14:52] INFO     scanner.sqli — Scanning: http://localhost/dvwa?C=M;O=A
+[2026-04-27 13:14:52] INFO     scanner.sqli — Scanning: http://localhost/dvwa?C=S;O=A
+[2026-04-27 13:14:53] INFO     scanner.sqli — Scanning: http://localhost/dvwa?C=D;O=A
+[2026-04-27 13:14:54] INFO     scanner.sqli — Scanning: http://localhost/dvwa?C=N;O=A
+[2026-04-27 13:14:54] INFO     scanner.sqli — Scanning: http://localhost/dvwa?C=M;O=D
+[2026-04-27 13:14:55] INFO     scanner.sqli — Scanning: http://localhost/dvwa?C=S;O=D
+[2026-04-27 13:14:55] INFO     scanner.sqli — Scanning: http://localhost/dvwa?C=D;O=D
+[2026-04-27 13:14:56] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-27 13:16:38] INFO     main — Cookies loaded: ['PHPSESSID', 'security']
+[2026-04-27 13:16:38] INFO     scanner.crawler — Starting crawl: http://localhost/dvwa/index.php (max depth=3)
+[2026-04-27 13:16:38] INFO     scanner.crawler — [depth=0] Crawling: http://localhost/dvwa/index.php
+[2026-04-27 13:16:38] INFO     scanner.crawler — Crawl complete. 0 URLs found, 0 errors.
+[2026-04-27 13:17:02] INFO     main — Cookies loaded: ['PHPSESSID', 'security']
+[2026-04-27 13:17:02] INFO     scanner.crawler — Starting crawl: http://localhost/dvwa/vulnerabilities/sqli (max depth=2)
+[2026-04-27 13:17:02] INFO     scanner.crawler — [depth=0] Crawling: http://localhost/dvwa/vulnerabilities/sqli
+[2026-04-27 13:17:02] INFO     scanner.crawler — Crawl complete. 0 URLs found, 0 errors.
+[2026-04-28 10:41:27] INFO     main — Cookies loaded: ['PHPSESSID', 'security']
+[2026-04-28 10:41:27] INFO     scanner.crawler — Starting crawl: http://localhost/dvwa/vulnerabilities/xss_r/?name=test (max depth=1)
+[2026-04-28 10:41:27] INFO     scanner.crawler — [depth=0] Crawling: http://localhost/dvwa/vulnerabilities/xss_r/?name=test
+[2026-04-28 10:41:27] INFO     scanner.crawler — Crawl complete. 0 URLs found, 0 errors.
+[2026-04-28 10:41:27] INFO     scanner.xss — XSS scan started. 0 URL(s) to probe.
+[2026-04-28 10:41:27] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 10:45:19] INFO     main — Cookies loaded: ['PHPSESSID', 'security']
+[2026-04-28 10:47:38] INFO     main — Cookies loaded: ['PHPSESSID', 'security']
+[2026-04-28 10:47:38] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security']
+[2026-04-28 10:47:38] INFO     scanner.crawler — Starting crawl: http://localhost/dvwa/vulnerabilities/xss_r/?name=test (max depth=1)
+[2026-04-28 10:47:38] INFO     scanner.crawler — [depth=0] Crawling: http://localhost/dvwa/vulnerabilities/xss_r/?name=test
+[2026-04-28 10:47:38] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost/dvwa/vulnerabilities/xss_r/?name=test
+[2026-04-28 10:47:38] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-28 10:47:38] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 10:47:38] INFO     scanner.sqli — Scanning: http://localhost/dvwa/vulnerabilities/xss_r/?name=test
+[2026-04-28 10:47:38] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 10:47:38] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-28 10:47:38] INFO     scanner.xss — Scanning: http://localhost/dvwa/vulnerabilities/xss_r/?name=test
+[2026-04-28 10:47:39] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 10:51:34] INFO     main — Cookies loaded: ['PHPSESSID', 'security']
+[2026-04-28 10:51:34] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security']
+[2026-04-28 10:51:34] INFO     scanner.crawler — Starting crawl: http://localhost/vulnerabilities/xss_r/?name=test (max depth=1)
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=0] Crawling: http://localhost/vulnerabilities/xss_r/?name=test
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/instructions.php
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/setup.php
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/brute/
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/exec/
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/csrf/
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/fi/?page=include.php
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/upload/
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/captcha/
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/sqli/
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/sqli_blind/
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/weak_id/
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/xss_d/
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/xss_r/
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/xss_s/
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/csp/
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/javascript/
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/security.php
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/phpinfo.php
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/about.php
+[2026-04-28 10:51:34] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/logout.php
+[2026-04-28 10:51:34] INFO     scanner.crawler — Crawl complete. 21 URLs found, 0 errors.
+[2026-04-28 10:51:34] INFO     scanner.sqli — SQLi scan started. 2 injectable URL(s) to probe.
+[2026-04-28 10:51:34] INFO     scanner.sqli — Scanning: http://localhost/vulnerabilities/xss_r/?name=test
+[2026-04-28 10:51:35] INFO     scanner.sqli — Scanning: http://localhost/vulnerabilities/fi/?page=include.php
+[2026-04-28 10:51:36] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 10:51:36] INFO     scanner.xss — XSS scan started. 21 URL(s) to probe.
+[2026-04-28 10:51:36] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/xss_r/?name=test
+[2026-04-28 10:51:37] INFO     scanner.xss — Scanning: http://localhost/
+[2026-04-28 10:51:38] INFO     scanner.xss — Scanning: http://localhost/instructions.php
+[2026-04-28 10:51:38] INFO     scanner.xss — Scanning: http://localhost/setup.php
+[2026-04-28 10:51:40] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/brute/
+[2026-04-28 10:51:41] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/exec/
+[2026-04-28 10:51:42] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/csrf/
+[2026-04-28 10:51:43] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/fi/?page=include.php
+[2026-04-28 10:51:44] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/upload/
+[2026-04-28 10:51:45] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/captcha/
+[2026-04-28 10:51:46] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/sqli/
+[2026-04-28 10:51:47] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/sqli_blind/
+[2026-04-28 10:51:48] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/weak_id/
+[2026-04-28 10:51:49] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/xss_d/
+[2026-04-28 10:51:50] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/xss_r/
+[2026-04-28 10:51:51] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/xss_s/
+[2026-04-28 10:51:52] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/csp/
+[2026-04-28 10:51:53] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/javascript/
+[2026-04-28 10:51:54] INFO     scanner.xss — Scanning: http://localhost/security.php
+[2026-04-28 10:51:55] INFO     scanner.xss — Scanning: http://localhost/phpinfo.php
+[2026-04-28 10:51:56] INFO     scanner.xss — Scanning: http://localhost/about.php
+[2026-04-28 10:51:56] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 10:55:57] INFO     main — Cookies loaded: ['PHPSESSID', 'security']
+[2026-04-28 10:55:57] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security']
+[2026-04-28 10:55:57] INFO     scanner.crawler — Starting crawl: http://localhost/vulnerabilities/xss_r/?name=test (max depth=1)
+[2026-04-28 10:55:57] INFO     scanner.crawler — [depth=0] Crawling: http://localhost/vulnerabilities/xss_r/?name=test
+[2026-04-28 10:55:57] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost/vulnerabilities/xss_r/?name=test
+[2026-04-28 10:55:57] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-28 10:55:57] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 10:55:57] INFO     scanner.sqli — Scanning: http://localhost/vulnerabilities/xss_r/?name=test
+[2026-04-28 10:55:58] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 10:55:58] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-28 10:55:58] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/xss_r/?name=test
+[2026-04-28 10:55:58] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 11:04:26] INFO     main — Auto-logging into DVWA at http://localhost...
+[2026-04-28 11:04:26] INFO     main — Auto-login successful. Cookies: ['PHPSESSID', 'security']
+[2026-04-28 11:04:26] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security']
+[2026-04-28 11:04:26] INFO     scanner.crawler — Starting crawl: http://localhost/vulnerabilities/xss_r/?name=test (max depth=1)
+[2026-04-28 11:04:26] INFO     scanner.crawler — [depth=0] Crawling: http://localhost/vulnerabilities/xss_r/?name=test
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/instructions.php
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/setup.php
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/brute/
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/exec/
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/csrf/
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/fi/?page=include.php
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/upload/
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/captcha/
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/sqli/
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/sqli_blind/
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/weak_id/
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/xss_d/
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/xss_r/
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/xss_s/
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/csp/
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/vulnerabilities/javascript/
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/security.php
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/phpinfo.php
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/about.php
+[2026-04-28 11:04:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost/logout.php
+[2026-04-28 11:04:27] INFO     scanner.crawler — Crawl complete. 21 URLs found, 0 errors.
+[2026-04-28 11:04:27] INFO     scanner.sqli — SQLi scan started. 2 injectable URL(s) to probe.
+[2026-04-28 11:04:27] INFO     scanner.sqli — Scanning: http://localhost/vulnerabilities/xss_r/?name=test
+[2026-04-28 11:04:28] INFO     scanner.sqli — Scanning: http://localhost/vulnerabilities/fi/?page=include.php
+[2026-04-28 11:04:28] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 11:04:28] INFO     scanner.xss — XSS scan started. 21 URL(s) to probe.
+[2026-04-28 11:04:28] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/xss_r/?name=test
+[2026-04-28 11:04:29] INFO     scanner.xss — Scanning: http://localhost/
+[2026-04-28 11:04:29] INFO     scanner.xss — Scanning: http://localhost/instructions.php
+[2026-04-28 11:04:30] INFO     scanner.xss — Scanning: http://localhost/setup.php
+[2026-04-28 11:04:30] WARNING  scanner.xss — [XSS - FORM] http://localhost/setup.php | form action='http://localhost/setup.php' method='post' | fields='unknown' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:04:30] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/brute/
+[2026-04-28 11:04:31] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/exec/
+[2026-04-28 11:04:31] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/csrf/
+[2026-04-28 11:04:32] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/fi/?page=include.php
+[2026-04-28 11:04:33] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/upload/
+[2026-04-28 11:04:33] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/captcha/
+[2026-04-28 11:04:34] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/sqli/
+[2026-04-28 11:04:34] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/sqli_blind/
+[2026-04-28 11:04:35] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/weak_id/
+[2026-04-28 11:04:35] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/xss_d/
+[2026-04-28 11:04:36] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/xss_r/
+[2026-04-28 11:04:36] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/xss_s/
+[2026-04-28 11:04:37] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/csp/
+[2026-04-28 11:04:37] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/javascript/
+[2026-04-28 11:04:38] INFO     scanner.xss — Scanning: http://localhost/security.php
+[2026-04-28 11:04:38] INFO     scanner.xss — Scanning: http://localhost/phpinfo.php
+[2026-04-28 11:04:39] INFO     scanner.xss — Scanning: http://localhost/about.php
+[2026-04-28 11:04:39] INFO     scanner.xss — XSS scan complete. 1 vulnerability/vulnerabilities found.
+[2026-04-28 11:06:43] INFO     main — Auto-logging into DVWA at http://localhost...
+[2026-04-28 11:06:43] INFO     main — Auto-login successful. Cookies: ['PHPSESSID', 'security']
+[2026-04-28 11:06:43] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security']
+[2026-04-28 11:06:43] INFO     scanner.crawler — Starting crawl: http://localhost/vulnerabilities/xss_r/?name=test (max depth=0)
+[2026-04-28 11:06:43] INFO     scanner.crawler — [depth=0] Crawling: http://localhost/vulnerabilities/xss_r/?name=test
+[2026-04-28 11:06:43] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-28 11:06:43] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 11:06:43] INFO     scanner.sqli — Scanning: http://localhost/vulnerabilities/xss_r/?name=test
+[2026-04-28 11:06:44] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 11:06:44] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-28 11:06:44] INFO     scanner.xss — Scanning: http://localhost/vulnerabilities/xss_r/?name=test
+[2026-04-28 11:06:44] WARNING  scanner.xss — [XSS - URL PARAM] http://localhost/vulnerabilities/xss_r/?name=test | param='name' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:06:44] WARNING  scanner.xss — [XSS - FORM] http://localhost/vulnerabilities/xss_r/?name=test | form action='http://localhost/vulnerabilities/xss_r/?name=test' method='get' | fields='name' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:06:44] INFO     scanner.xss — XSS scan complete. 2 vulnerability/vulnerabilities found.
+[2026-04-28 11:08:40] INFO     scanner.crawler — Starting crawl: http://testphp.vulnweb.com (max depth=2)
+[2026-04-28 11:08:40] INFO     scanner.crawler — [depth=0] Crawling: http://testphp.vulnweb.com
+[2026-04-28 11:08:50] WARNING  scanner.crawler — Timeout fetching: http://testphp.vulnweb.com
+[2026-04-28 11:08:50] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://testphp.vulnweb.com
+[2026-04-28 11:08:50] INFO     scanner.crawler — Crawl complete. 1 URLs found, 1 errors.
+[2026-04-28 11:08:50] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-28 11:08:50] INFO     scanner.xss — Scanning: http://testphp.vulnweb.com
+[2026-04-28 11:09:31] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 11:11:20] INFO     scanner.crawler — Starting crawl: http://demo.testfire.net (max depth=2)
+[2026-04-28 11:11:20] INFO     scanner.crawler — [depth=0] Crawling: http://demo.testfire.net
+[2026-04-28 11:11:23] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp
+[2026-04-28 11:11:24] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/login.jsp
+[2026-04-28 11:11:25] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=inside_contact.htm
+[2026-04-28 11:11:26] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/feedback.jsp
+[2026-04-28 11:11:27] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=personal.htm
+[2026-04-28 11:11:28] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=business.htm
+[2026-04-28 11:11:28] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=inside.htm
+[2026-04-28 11:11:29] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=personal_deposit.htm
+[2026-04-28 11:11:30] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=personal_checking.htm
+[2026-04-28 11:11:31] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=personal_loans.htm
+[2026-04-28 11:11:32] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=personal_cards.htm
+[2026-04-28 11:11:32] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=personal_investments.htm
+[2026-04-28 11:11:33] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=personal_other.htm
+[2026-04-28 11:11:34] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=business_deposit.htm
+[2026-04-28 11:11:35] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=business_lending.htm
+[2026-04-28 11:11:36] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=business_cards.htm
+[2026-04-28 11:11:36] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=business_insurance.htm
+[2026-04-28 11:11:37] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=business_retirement.htm
+[2026-04-28 11:11:38] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=business_other.htm
+[2026-04-28 11:11:39] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=inside_about.htm
+[2026-04-28 11:11:40] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/cgi.exe
+[2026-04-28 11:11:40] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=inside_investor.htm
+[2026-04-28 11:11:41] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=inside_press.htm
+[2026-04-28 11:11:42] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=inside_careers.htm
+[2026-04-28 11:11:43] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/subscribe.jsp
+[2026-04-28 11:11:43] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=personal_savings.htm
+[2026-04-28 11:11:44] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=privacy.htm
+[2026-04-28 11:11:45] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/default.jsp?content=security.htm
+[2026-04-28 11:11:45] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/survey_questions.jsp
+[2026-04-28 11:11:46] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/index.jsp?content=security.htm
+[2026-04-28 11:11:47] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/status_check.jsp
+[2026-04-28 11:11:48] INFO     scanner.crawler — [depth=1] Crawling: http://demo.testfire.net/swagger/index.html
+[2026-04-28 11:11:49] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/disclaimer.htm?url=http://www.netscape.com
+[2026-04-28 11:11:49] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/disclaimer.htm?url=http://www.microsoft.com
+[2026-04-28 11:11:49] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/index.jsp?content=inside_community.htm
+[2026-04-28 11:11:50] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/pr/communityannualreport.pdf
+[2026-04-28 11:11:51] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/admin/clients.xls
+[2026-04-28 11:11:52] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/high_yield_investments.htm
+[2026-04-28 11:11:53] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/my%20documents/JohnSmith/Bank%20Site%20Documents/grouplife.htm
+[2026-04-28 11:11:53] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/index.jsp?content=inside_executives.htm
+[2026-04-28 11:11:53] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/inside_points_of_interest.htm
+[2026-04-28 11:11:54] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/index.jsp?content=pr/20061109.htm
+[2026-04-28 11:11:54] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/index.jsp?content=pr/20061005.htm
+[2026-04-28 11:11:55] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/index.jsp?content=pr/20060928.htm
+[2026-04-28 11:11:55] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/index.jsp?content=pr/20060921.htm
+[2026-04-28 11:11:55] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/index.jsp?content=pr/20060817.htm
+[2026-04-28 11:11:56] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/index.jsp?content=pr/20060720.htm
+[2026-04-28 11:11:56] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/index.jsp?content=pr/20060518.htm
+[2026-04-28 11:11:56] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/index.jsp?content=pr/20060413.htm
+[2026-04-28 11:11:57] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/index.jsp?content=inside_jobs.htm
+[2026-04-28 11:11:57] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/index.jsp?content=inside_benefits.htm
+[2026-04-28 11:11:57] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/index.jsp?content=inside_internships.htm
+[2026-04-28 11:11:57] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/index.jsp?content=inside_trainee.htm
+[2026-04-28 11:11:58] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/Privacypolicy.jsp?sec=Careers&template=US
+[2026-04-28 11:11:59] INFO     scanner.crawler — [depth=2] Crawling: http://demo.testfire.net/survey_questions.jsp?step=a
+[2026-04-28 11:11:59] INFO     scanner.crawler — Crawl complete. 49 URLs found, 0 errors.
+[2026-04-28 11:11:59] INFO     scanner.sqli — SQLi scan started. 40 injectable URL(s) to probe.
+[2026-04-28 11:11:59] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=inside_contact.htm
+[2026-04-28 11:12:10] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=personal.htm
+[2026-04-28 11:12:22] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=business.htm
+[2026-04-28 11:12:34] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=inside.htm
+[2026-04-28 11:12:45] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=personal_deposit.htm
+[2026-04-28 11:12:57] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=personal_checking.htm
+[2026-04-28 11:13:08] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=personal_loans.htm
+[2026-04-28 11:13:20] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=personal_cards.htm
+[2026-04-28 11:13:29] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=personal_investments.htm
+[2026-04-28 11:13:39] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=personal_other.htm
+[2026-04-28 11:13:51] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=business_deposit.htm
+[2026-04-28 11:14:02] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=business_lending.htm
+[2026-04-28 11:14:23] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=business_cards.htm
+[2026-04-28 11:14:33] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=business_insurance.htm
+[2026-04-28 11:14:44] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=business_retirement.htm
+[2026-04-28 11:14:55] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=business_other.htm
+[2026-04-28 11:15:06] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=inside_about.htm
+[2026-04-28 11:15:15] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=inside_investor.htm
+[2026-04-28 11:15:23] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=inside_press.htm
+[2026-04-28 11:15:32] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=inside_careers.htm
+[2026-04-28 11:15:40] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=personal_savings.htm
+[2026-04-28 11:15:49] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=privacy.htm
+[2026-04-28 11:15:59] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=security.htm
+[2026-04-28 11:16:09] INFO     scanner.sqli — Scanning: http://demo.testfire.net/disclaimer.htm?url=http://www.netscape.com
+[2026-04-28 11:16:21] INFO     scanner.sqli — Scanning: http://demo.testfire.net/disclaimer.htm?url=http://www.microsoft.com
+[2026-04-28 11:16:30] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=inside_community.htm
+[2026-04-28 11:16:40] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=inside_executives.htm
+[2026-04-28 11:16:48] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=pr/20061109.htm
+[2026-04-28 11:16:56] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=pr/20061005.htm
+[2026-04-28 11:17:04] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=pr/20060928.htm
+[2026-04-28 11:17:13] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=pr/20060921.htm
+[2026-04-28 11:17:22] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=pr/20060817.htm
+[2026-04-28 11:17:31] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=pr/20060720.htm
+[2026-04-28 11:17:39] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=pr/20060518.htm
+[2026-04-28 11:17:47] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=pr/20060413.htm
+[2026-04-28 11:17:56] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=inside_jobs.htm
+[2026-04-28 11:18:04] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=inside_benefits.htm
+[2026-04-28 11:18:13] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=inside_internships.htm
+[2026-04-28 11:18:21] INFO     scanner.sqli — Scanning: http://demo.testfire.net/index.jsp?content=inside_trainee.htm
+[2026-04-28 11:18:29] INFO     scanner.sqli — Scanning: http://demo.testfire.net/survey_questions.jsp?step=a
+[2026-04-28 11:18:38] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 11:18:38] INFO     scanner.xss — XSS scan started. 49 URL(s) to probe.
+[2026-04-28 11:18:38] INFO     scanner.xss — Scanning: http://demo.testfire.net
+[2026-04-28 11:18:39] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:18:40] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp
+[2026-04-28 11:18:40] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:18:42] INFO     scanner.xss — Scanning: http://demo.testfire.net/login.jsp
+[2026-04-28 11:18:44] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=inside_contact.htm
+[2026-04-28 11:18:45] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=inside_contact.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:18:46] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=inside_contact.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:18:47] INFO     scanner.xss — Scanning: http://demo.testfire.net/feedback.jsp
+[2026-04-28 11:18:47] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/feedback.jsp | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:18:48] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/feedback.jsp | form action='http://demo.testfire.net/sendFeedback' method='post' | fields='name, email_addr, subject, comments' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:18:49] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=personal.htm
+[2026-04-28 11:18:51] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=personal.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:18:51] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=personal.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:18:53] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=business.htm
+[2026-04-28 11:18:54] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=business.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:18:54] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=business.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:18:56] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=inside.htm
+[2026-04-28 11:18:57] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=inside.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:18:58] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=inside.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:18:59] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=personal_deposit.htm
+[2026-04-28 11:19:00] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=personal_deposit.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:01] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=personal_deposit.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:02] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=personal_checking.htm
+[2026-04-28 11:19:04] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=personal_checking.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:04] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=personal_checking.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:06] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=personal_loans.htm
+[2026-04-28 11:19:07] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=personal_loans.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:07] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=personal_loans.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:09] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=personal_cards.htm
+[2026-04-28 11:19:10] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=personal_cards.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:11] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=personal_cards.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:12] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=personal_investments.htm
+[2026-04-28 11:19:14] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=personal_investments.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:14] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=personal_investments.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:16] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=personal_other.htm
+[2026-04-28 11:19:17] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=personal_other.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:17] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=personal_other.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:19] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=business_deposit.htm
+[2026-04-28 11:19:20] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=business_deposit.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:20] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=business_deposit.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:22] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=business_lending.htm
+[2026-04-28 11:19:23] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=business_lending.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:24] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=business_lending.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:25] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=business_cards.htm
+[2026-04-28 11:19:27] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=business_cards.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:27] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=business_cards.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:28] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=business_insurance.htm
+[2026-04-28 11:19:30] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=business_insurance.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:30] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=business_insurance.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:32] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=business_retirement.htm
+[2026-04-28 11:19:33] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=business_retirement.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:34] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=business_retirement.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:35] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=business_other.htm
+[2026-04-28 11:19:36] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=business_other.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:37] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=business_other.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:38] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=inside_about.htm
+[2026-04-28 11:19:40] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=inside_about.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:40] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=inside_about.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:42] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=inside_investor.htm
+[2026-04-28 11:19:43] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=inside_investor.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:43] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=inside_investor.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:45] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=inside_press.htm
+[2026-04-28 11:19:46] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=inside_press.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:46] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=inside_press.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:48] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=inside_careers.htm
+[2026-04-28 11:19:49] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=inside_careers.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:50] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=inside_careers.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:51] INFO     scanner.xss — Scanning: http://demo.testfire.net/subscribe.jsp
+[2026-04-28 11:19:52] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/subscribe.jsp | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:54] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/subscribe.jsp | form action='http://demo.testfire.net/doSubscribe' method='post' | fields='txtEmail' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:55] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/subscribe.jsp | header='Referer' | payload='http://WASP-XSS-TEST.com/<script>alert(1)</script>'
+[2026-04-28 11:19:55] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/subscribe.jsp | header='User-Agent' | payload='WASP-Scanner/<script>alert(1)</script>'
+[2026-04-28 11:19:55] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/subscribe.jsp | header='X-Forwarded-For' | payload='<script>alert(1)</script>'
+[2026-04-28 11:19:56] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=personal_savings.htm
+[2026-04-28 11:19:57] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=personal_savings.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:19:57] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=personal_savings.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:19:59] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=privacy.htm
+[2026-04-28 11:20:00] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=privacy.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:01] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=privacy.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:02] INFO     scanner.xss — Scanning: http://demo.testfire.net/survey_questions.jsp
+[2026-04-28 11:20:02] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/survey_questions.jsp | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:04] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=security.htm
+[2026-04-28 11:20:05] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=security.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:05] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=security.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:07] INFO     scanner.xss — Scanning: http://demo.testfire.net/status_check.jsp
+[2026-04-28 11:20:07] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/status_check.jsp | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:07] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/status_check.jsp | header='Referer' | payload='http://WASP-XSS-TEST.com/<script>alert(1)</script>'
+[2026-04-28 11:20:08] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/status_check.jsp | header='User-Agent' | payload='WASP-Scanner/<script>alert(1)</script>'
+[2026-04-28 11:20:08] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/status_check.jsp | header='X-Forwarded-For' | payload='<script>alert(1)</script>'
+[2026-04-28 11:20:08] INFO     scanner.xss — Scanning: http://demo.testfire.net/swagger/index.html
+[2026-04-28 11:20:09] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/swagger/index.html | header='Referer' | payload='http://WASP-XSS-TEST.com/<script>alert(1)</script>'
+[2026-04-28 11:20:09] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/swagger/index.html | header='User-Agent' | payload='WASP-Scanner/<script>alert(1)</script>'
+[2026-04-28 11:20:10] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/swagger/index.html | header='X-Forwarded-For' | payload='<script>alert(1)</script>'
+[2026-04-28 11:20:10] INFO     scanner.xss — Scanning: http://demo.testfire.net/disclaimer.htm?url=http://www.netscape.com
+[2026-04-28 11:20:10] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/disclaimer.htm?url=http://www.netscape.com | param='url' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:11] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/disclaimer.htm?url=http://www.netscape.com | header='Referer' | payload='http://WASP-XSS-TEST.com/<script>alert(1)</script>'
+[2026-04-28 11:20:11] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/disclaimer.htm?url=http://www.netscape.com | header='User-Agent' | payload='WASP-Scanner/<script>alert(1)</script>'
+[2026-04-28 11:20:12] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/disclaimer.htm?url=http://www.netscape.com | header='X-Forwarded-For' | payload='<script>alert(1)</script>'
+[2026-04-28 11:20:12] INFO     scanner.xss — Scanning: http://demo.testfire.net/disclaimer.htm?url=http://www.microsoft.com
+[2026-04-28 11:20:12] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/disclaimer.htm?url=http://www.microsoft.com | param='url' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:13] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/disclaimer.htm?url=http://www.microsoft.com | header='Referer' | payload='http://WASP-XSS-TEST.com/<script>alert(1)</script>'
+[2026-04-28 11:20:13] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/disclaimer.htm?url=http://www.microsoft.com | header='User-Agent' | payload='WASP-Scanner/<script>alert(1)</script>'
+[2026-04-28 11:20:13] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/disclaimer.htm?url=http://www.microsoft.com | header='X-Forwarded-For' | payload='<script>alert(1)</script>'
+[2026-04-28 11:20:14] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=inside_community.htm
+[2026-04-28 11:20:15] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=inside_community.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:16] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=inside_community.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:17] INFO     scanner.xss — Scanning: http://demo.testfire.net/high_yield_investments.htm
+[2026-04-28 11:20:17] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/high_yield_investments.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:18] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/high_yield_investments.htm | header='Referer' | payload='http://WASP-XSS-TEST.com/<script>alert(1)</script>'
+[2026-04-28 11:20:18] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/high_yield_investments.htm | header='User-Agent' | payload='WASP-Scanner/<script>alert(1)</script>'
+[2026-04-28 11:20:18] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/high_yield_investments.htm | header='X-Forwarded-For' | payload='<script>alert(1)</script>'
+[2026-04-28 11:20:19] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=inside_executives.htm
+[2026-04-28 11:20:20] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=inside_executives.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:21] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=inside_executives.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:22] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=pr/20061109.htm
+[2026-04-28 11:20:23] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=pr/20061109.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:24] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=pr/20061109.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:25] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=pr/20061005.htm
+[2026-04-28 11:20:26] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=pr/20061005.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:27] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=pr/20061005.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:28] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=pr/20060928.htm
+[2026-04-28 11:20:30] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=pr/20060928.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:30] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=pr/20060928.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:32] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=pr/20060921.htm
+[2026-04-28 11:20:33] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=pr/20060921.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:34] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=pr/20060921.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:35] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=pr/20060817.htm
+[2026-04-28 11:20:36] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=pr/20060817.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:36] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=pr/20060817.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:38] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=pr/20060720.htm
+[2026-04-28 11:20:39] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=pr/20060720.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:39] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=pr/20060720.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:41] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=pr/20060518.htm
+[2026-04-28 11:20:42] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=pr/20060518.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:43] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=pr/20060518.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:44] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=pr/20060413.htm
+[2026-04-28 11:20:45] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=pr/20060413.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:46] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=pr/20060413.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:47] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=inside_jobs.htm
+[2026-04-28 11:20:48] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=inside_jobs.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:49] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=inside_jobs.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:49] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/index.jsp?content=inside_jobs.htm | header='Referer' | payload='http://WASP-XSS-TEST.com/<script>alert(1)</script>'
+[2026-04-28 11:20:49] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/index.jsp?content=inside_jobs.htm | header='User-Agent' | payload='WASP-Scanner/<script>alert(1)</script>'
+[2026-04-28 11:20:49] WARNING  scanner.xss — [XSS - HEADER] http://demo.testfire.net/index.jsp?content=inside_jobs.htm | header='X-Forwarded-For' | payload='<script>alert(1)</script>'
+[2026-04-28 11:20:50] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=inside_benefits.htm
+[2026-04-28 11:20:52] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=inside_benefits.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:52] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=inside_benefits.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:53] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=inside_internships.htm
+[2026-04-28 11:20:55] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=inside_internships.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:55] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=inside_internships.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:20:56] INFO     scanner.xss — Scanning: http://demo.testfire.net/index.jsp?content=inside_trainee.htm
+[2026-04-28 11:20:58] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/index.jsp?content=inside_trainee.htm | param='content' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:20:58] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/index.jsp?content=inside_trainee.htm | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:21:00] INFO     scanner.xss — Scanning: http://demo.testfire.net/survey_questions.jsp?step=a
+[2026-04-28 11:21:01] WARNING  scanner.xss — [XSS - URL PARAM] http://demo.testfire.net/survey_questions.jsp?step=a | param='step' | payload='<img src=x onerror=alert("WASP-XSS")>'
+[2026-04-28 11:21:02] WARNING  scanner.xss — [XSS - FORM] http://demo.testfire.net/survey_questions.jsp?step=a | form action='http://demo.testfire.net/search.jsp' method='get' | fields='query' | payload='<script>alert("WASP-XSS")</script>'
+[2026-04-28 11:21:03] INFO     scanner.xss — XSS scan complete. 108 vulnerability/vulnerabilities found.
+[2026-04-28 11:37:07] INFO     main — Auto-logging into bWAPP at http://localhost:8080...
+[2026-04-28 11:37:07] INFO     main — Auto-login successful. Cookies: ['PHPSESSID', 'security_level']
+[2026-04-28 11:37:07] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security_level']
+[2026-04-28 11:37:07] INFO     scanner.crawler — Starting crawl: http://localhost:8080 (max depth=2)
+[2026-04-28 11:37:07] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080
+[2026-04-28 11:37:08] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/password_change.php
+[2026-04-28 11:37:08] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/user_extra.php
+[2026-04-28 11:37:09] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/security_level_set.php
+[2026-04-28 11:37:09] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/reset.php
+[2026-04-28 11:37:10] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/credits.php
+[2026-04-28 11:37:10] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/logout.php
+[2026-04-28 11:37:10] INFO     scanner.crawler — [depth=2] Crawling: http://localhost:8080/portal.php
+[2026-04-28 11:37:10] INFO     scanner.crawler — Crawl complete. 6 URLs found, 0 errors.
+[2026-04-28 11:37:10] INFO     scanner.xss — XSS scan started. 6 URL(s) to probe.
+[2026-04-28 11:37:10] INFO     scanner.xss — Scanning: http://localhost:8080
+[2026-04-28 11:37:11] INFO     scanner.xss — Scanning: http://localhost:8080/password_change.php
+[2026-04-28 11:37:11] INFO     scanner.xss — Scanning: http://localhost:8080/user_extra.php
+[2026-04-28 11:37:12] INFO     scanner.xss — Scanning: http://localhost:8080/security_level_set.php
+[2026-04-28 11:37:12] INFO     scanner.xss — Scanning: http://localhost:8080/reset.php
+[2026-04-28 11:37:13] INFO     scanner.xss — Scanning: http://localhost:8080/credits.php
+[2026-04-28 11:37:13] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 11:39:57] INFO     scanner.crawler — Starting crawl: http://localhost:8080 (max depth=2)
+[2026-04-28 11:39:57] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080
+[2026-04-28 11:39:57] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080
+[2026-04-28 11:39:57] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-28 11:39:57] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-28 11:39:57] INFO     scanner.xss — Scanning: http://localhost:8080
+[2026-04-28 11:39:58] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 11:44:14] INFO     scanner.crawler — Starting crawl: http://localhost:8080 (max depth=2)
+[2026-04-28 11:44:14] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080
+[2026-04-28 11:44:14] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080
+[2026-04-28 11:44:14] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-28 11:44:14] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-28 11:44:14] INFO     scanner.xss — Scanning: http://localhost:8080
+[2026-04-28 11:44:15] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 16:48:49] INFO     main — Auto-logging into bWAPP at http://localhost:8080/portal.php...
+[2026-04-28 16:48:49] ERROR    main — Auto-login failed. Try manual --cookie flag.
+[2026-04-28 16:53:03] INFO     scanner.crawler — Starting crawl: http://localhost:8080/portal.php (max depth=2)
+[2026-04-28 16:53:03] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/portal.php
+[2026-04-28 16:53:03] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/portal.php
+[2026-04-28 16:53:03] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-28 16:53:03] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-28 16:53:03] INFO     scanner.xss — Scanning: http://localhost:8080/portal.php
+[2026-04-28 16:53:04] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 16:53:32] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=test&action=search (max depth=1)
+[2026-04-28 16:53:32] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:53:32] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:53:32] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-28 16:53:32] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 16:53:32] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:53:33] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 16:53:33] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-28 16:53:33] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:53:33] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 16:54:05] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=test&action=search (max depth=1)
+[2026-04-28 16:54:05] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:54:05] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:54:05] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-28 16:54:05] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 16:54:05] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:54:05] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 16:54:05] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-28 16:54:05] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:54:06] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 16:55:27] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=test&action=search (max depth=1)
+[2026-04-28 16:55:27] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:55:27] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:55:27] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-28 16:55:27] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 16:55:27] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:55:28] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 16:55:28] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-28 16:55:28] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:55:28] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 16:57:15] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=test&action=search (max depth=1)
+[2026-04-28 16:57:15] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:57:15] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:57:15] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-28 16:57:15] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 16:57:15] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:57:16] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 16:57:16] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-28 16:57:16] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 16:57:17] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 17:08:15] INFO     main — Cookies loaded from file: ['PHPSESSID', 'security_level']
+[2026-04-28 17:08:15] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security_level']
+[2026-04-28 17:08:15] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=test&action=search (max depth=1)
+[2026-04-28 17:08:15] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:08:16] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/portal.php
+[2026-04-28 17:08:16] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/password_change.php
+[2026-04-28 17:08:16] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/user_extra.php
+[2026-04-28 17:08:16] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/security_level_set.php
+[2026-04-28 17:08:16] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/reset.php
+[2026-04-28 17:08:16] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/credits.php
+[2026-04-28 17:08:16] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/logout.php
+[2026-04-28 17:08:16] INFO     scanner.crawler — Crawl complete. 7 URLs found, 0 errors.
+[2026-04-28 17:08:16] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 17:08:16] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:08:17] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 17:08:17] INFO     scanner.xss — XSS scan started. 7 URL(s) to probe.
+[2026-04-28 17:08:17] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:08:17] INFO     scanner.xss — Scanning: http://localhost:8080/portal.php
+[2026-04-28 17:08:18] INFO     scanner.xss — Scanning: http://localhost:8080/password_change.php
+[2026-04-28 17:08:18] INFO     scanner.xss — Scanning: http://localhost:8080/user_extra.php
+[2026-04-28 17:08:19] INFO     scanner.xss — Scanning: http://localhost:8080/security_level_set.php
+[2026-04-28 17:08:19] INFO     scanner.xss — Scanning: http://localhost:8080/reset.php
+[2026-04-28 17:08:20] INFO     scanner.xss — Scanning: http://localhost:8080/credits.php
+[2026-04-28 17:08:20] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 17:08:21] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260428_170821.json
+[2026-04-28 17:08:21] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260428_170821.txt
+[2026-04-28 17:12:26] INFO     main — Cookies loaded from file: ['PHPSESSID', 'security_level']
+[2026-04-28 17:12:26] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security_level']
+[2026-04-28 17:12:26] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=test&action=search (max depth=1)
+[2026-04-28 17:12:26] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:12:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/portal.php
+[2026-04-28 17:12:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/password_change.php
+[2026-04-28 17:12:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/user_extra.php
+[2026-04-28 17:12:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/security_level_set.php
+[2026-04-28 17:12:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/reset.php
+[2026-04-28 17:12:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/credits.php
+[2026-04-28 17:12:27] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/logout.php
+[2026-04-28 17:12:27] INFO     scanner.crawler — Crawl complete. 7 URLs found, 0 errors.
+[2026-04-28 17:12:27] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 17:12:27] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:12:28] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 17:12:28] INFO     scanner.xss — XSS scan started. 7 URL(s) to probe.
+[2026-04-28 17:12:28] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:12:28] INFO     scanner.xss — Scanning: http://localhost:8080/portal.php
+[2026-04-28 17:12:29] INFO     scanner.xss — Scanning: http://localhost:8080/password_change.php
+[2026-04-28 17:12:29] INFO     scanner.xss — Scanning: http://localhost:8080/user_extra.php
+[2026-04-28 17:12:30] INFO     scanner.xss — Scanning: http://localhost:8080/security_level_set.php
+[2026-04-28 17:12:30] INFO     scanner.xss — Scanning: http://localhost:8080/reset.php
+[2026-04-28 17:12:31] INFO     scanner.xss — Scanning: http://localhost:8080/credits.php
+[2026-04-28 17:12:31] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 17:12:31] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260428_171231.json
+[2026-04-28 17:12:31] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260428_171231.txt
+[2026-04-28 17:17:57] INFO     main — Cookies loaded from file: ['PHPSESSID', 'security_level']
+[2026-04-28 17:17:57] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security_level']
+[2026-04-28 17:17:57] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=test&action=search (max depth=1)
+[2026-04-28 17:17:57] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:17:57] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/portal.php
+[2026-04-28 17:17:57] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/password_change.php
+[2026-04-28 17:17:57] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/user_extra.php
+[2026-04-28 17:17:57] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/security_level_set.php
+[2026-04-28 17:17:57] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/reset.php
+[2026-04-28 17:17:57] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/credits.php
+[2026-04-28 17:17:57] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/logout.php
+[2026-04-28 17:17:57] INFO     scanner.crawler — Crawl complete. 7 URLs found, 0 errors.
+[2026-04-28 17:17:57] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 17:17:57] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:19:05] INFO     main — Cookies loaded from file: ['PHPSESSID', 'security_level']
+[2026-04-28 17:19:05] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security_level']
+[2026-04-28 17:19:05] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=test&action=search (max depth=1)
+[2026-04-28 17:19:05] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:19:05] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:19:05] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-28 17:19:05] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 17:19:05] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:19:54] INFO     main — Cookies loaded from file: ['PHPSESSID', 'security_level']
+[2026-04-28 17:19:54] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security_level']
+[2026-04-28 17:19:54] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=test&action=search (max depth=1)
+[2026-04-28 17:19:54] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:19:54] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:19:54] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-28 17:19:54] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 17:19:54] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:19:55] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 17:19:55] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-28 17:19:55] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:19:56] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 17:19:56] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260428_171956.json
+[2026-04-28 17:19:56] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260428_171956.txt
+[2026-04-28 17:21:05] INFO     main — Cookies loaded from file: ['PHPSESSID', 'security_level']
+[2026-04-28 17:21:05] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security_level']
+[2026-04-28 17:21:05] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=test&action=search (max depth=1)
+[2026-04-28 17:21:05] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:21:06] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/portal.php
+[2026-04-28 17:21:06] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/password_change.php
+[2026-04-28 17:21:06] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/user_extra.php
+[2026-04-28 17:21:06] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/security_level_set.php
+[2026-04-28 17:21:06] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/reset.php
+[2026-04-28 17:21:06] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/credits.php
+[2026-04-28 17:21:06] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/logout.php
+[2026-04-28 17:21:06] INFO     scanner.crawler — Crawl complete. 7 URLs found, 0 errors.
+[2026-04-28 17:21:06] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 17:21:06] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:21:06] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 17:21:06] INFO     scanner.xss — XSS scan started. 7 URL(s) to probe.
+[2026-04-28 17:21:06] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:21:07] INFO     scanner.xss — Scanning: http://localhost:8080/portal.php
+[2026-04-28 17:21:08] INFO     scanner.xss — Scanning: http://localhost:8080/password_change.php
+[2026-04-28 17:21:08] INFO     scanner.xss — Scanning: http://localhost:8080/user_extra.php
+[2026-04-28 17:21:09] INFO     scanner.xss — Scanning: http://localhost:8080/security_level_set.php
+[2026-04-28 17:21:09] INFO     scanner.xss — Scanning: http://localhost:8080/reset.php
+[2026-04-28 17:21:10] INFO     scanner.xss — Scanning: http://localhost:8080/credits.php
+[2026-04-28 17:21:10] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 17:21:10] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260428_172110.json
+[2026-04-28 17:21:10] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260428_172110.txt
+[2026-04-28 17:29:53] INFO     main — Cookies loaded from file: ['PHPSESSID', 'security_level']
+[2026-04-28 17:29:53] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security_level']
+[2026-04-28 17:29:53] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=test&action=search (max depth=1)
+[2026-04-28 17:29:53] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:29:53] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:29:53] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-28 17:29:53] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 17:29:53] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:29:54] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 17:29:54] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-28 17:29:54] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:29:55] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 17:29:55] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260428_172955.json
+[2026-04-28 17:29:55] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260428_172955.txt
+[2026-04-28 17:39:06] INFO     main — Auto-logging into bWAPP at http://localhost:8080/sqli_1.php?title=test&action=search...
+[2026-04-28 17:39:06] INFO     main — Auto-login successful: ['PHPSESSID', 'security_level']
+[2026-04-28 17:39:06] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security_level']
+[2026-04-28 17:39:06] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=test&action=search (max depth=1)
+[2026-04-28 17:39:06] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:39:06] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:39:06] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-28 17:39:06] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-28 17:39:06] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:39:07] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 17:39:07] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-28 17:39:07] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-28 17:39:07] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-28 17:39:07] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260428_173907.json
+[2026-04-28 17:39:07] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260428_173907.txt
+[2026-04-29 08:13:49] INFO     main — Auto-logging into bWAPP at http://localhost:8080/sqli_1.php?title=test&action=search...
+[2026-04-29 08:13:53] ERROR    main — Auto-login failed. Use --cookie-file instead.
+[2026-04-29 08:16:39] INFO     main — Auto-logging into bWAPP at http://localhost:8080/sqli_1.php?title=test&action=search...
+[2026-04-29 08:16:39] ERROR    main — Auto-login failed. Use --cookie-file instead.
+[2026-04-29 08:17:51] INFO     main — Auto-logging into bWAPP at http://localhost:8080/sqli_1.php?title=test&action=search...
+[2026-04-29 08:17:51] INFO     main — Auto-login successful: ['PHPSESSID', 'security_level']
+[2026-04-29 08:17:51] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security_level']
+[2026-04-29 08:17:51] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=test&action=search (max depth=1)
+[2026-04-29 08:17:51] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-29 08:17:51] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-29 08:17:51] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-29 08:17:51] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-29 08:17:51] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-29 08:17:51] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-29 08:17:51] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-29 08:17:51] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-29 08:17:52] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-29 08:17:52] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260429_081752.json
+[2026-04-29 08:17:52] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260429_081752.txt
+[2026-04-29 08:24:23] INFO     main — Auto-logging into bWAPP at http://localhost:8080/sqli_1.php?title=test&action=search...
+[2026-04-29 08:24:23] INFO     core.utils — bWAPP login successful. Session: ['PHPSESSID', 'security_level']
+[2026-04-29 08:24:23] INFO     main — Auto-login successful: ['PHPSESSID', 'security_level']
+[2026-04-29 08:24:23] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security_level']
+[2026-04-29 08:24:23] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=test&action=search (max depth=1)
+[2026-04-29 08:24:23] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-29 08:24:23] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-29 08:24:23] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-29 08:24:23] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-29 08:24:23] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-29 08:24:24] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-29 08:24:24] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-29 08:24:24] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=test&action=search
+[2026-04-29 08:24:24] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-29 08:24:24] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260429_082424.json
+[2026-04-29 08:24:24] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title_test_action_search_20260429_082424.txt
+[2026-04-29 08:26:25] INFO     main — Auto-logging into bWAPP at http://localhost:8080/sqli_1.php?title=%25&action=search...
+[2026-04-29 08:26:25] INFO     core.utils — bWAPP login successful. Session: ['PHPSESSID', 'security_level']
+[2026-04-29 08:26:25] INFO     main — Auto-login successful: ['PHPSESSID', 'security_level']
+[2026-04-29 08:26:25] INFO     scanner.crawler — Session cookies loaded: ['PHPSESSID', 'security_level']
+[2026-04-29 08:26:25] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=%25&action=search (max depth=1)
+[2026-04-29 08:26:25] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-29 08:26:25] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-29 08:26:25] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-29 08:26:25] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-29 08:26:25] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-29 08:26:26] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-29 08:26:26] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-29 08:26:26] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-29 08:26:27] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-29 08:26:27] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260429_082627.json
+[2026-04-29 08:26:27] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260429_082627.txt
+[2026-04-29 08:39:43] INFO     main — Auto-logging into bWAPP at http://localhost:8080...
+[2026-04-29 08:39:43] INFO     main — Auto-login successful: ['PHPSESSID', 'security_level']
+[2026-04-29 08:39:43] INFO     scanner.crawler — Using provided authenticated session for crawler.
+[2026-04-29 08:39:43] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=%25&action=search (max depth=1)
+[2026-04-29 08:39:43] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-29 08:39:44] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/portal.php
+[2026-04-29 08:39:44] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/password_change.php
+[2026-04-29 08:39:44] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/user_extra.php
+[2026-04-29 08:39:44] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/security_level_set.php
+[2026-04-29 08:39:44] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/reset.php
+[2026-04-29 08:39:44] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/credits.php
+[2026-04-29 08:39:44] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/logout.php
+[2026-04-29 08:39:44] INFO     scanner.crawler — Crawl complete. 7 URLs found, 0 errors.
+[2026-04-29 08:39:44] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-29 08:39:44] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-29 08:39:45] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-29 08:39:45] INFO     scanner.xss — XSS scan started. 7 URL(s) to probe.
+[2026-04-29 08:39:45] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-29 08:39:45] INFO     scanner.xss — Scanning: http://localhost:8080/portal.php
+[2026-04-29 08:39:46] INFO     scanner.xss — Scanning: http://localhost:8080/password_change.php
+[2026-04-29 08:39:46] INFO     scanner.xss — Scanning: http://localhost:8080/user_extra.php
+[2026-04-29 08:39:47] INFO     scanner.xss — Scanning: http://localhost:8080/security_level_set.php
+[2026-04-29 08:39:47] INFO     scanner.xss — Scanning: http://localhost:8080/reset.php
+[2026-04-29 08:39:48] INFO     scanner.xss — Scanning: http://localhost:8080/credits.php
+[2026-04-29 08:39:48] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-29 08:48:30] INFO     main — Auto-logging into bWAPP at http://localhost:8080...
+[2026-04-29 08:48:30] INFO     core.utils — bWAPP session created. Cookies: ['PHPSESSID', 'security_level']
+[2026-04-29 08:48:30] INFO     main — Auto-login successful: ['PHPSESSID', 'security_level']
+[2026-04-29 08:48:30] INFO     scanner.crawler — Using provided authenticated session for crawler.
+[2026-04-29 08:48:30] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=%25&action=search (max depth=1)
+[2026-04-29 08:48:30] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-29 08:48:30] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/portal.php
+[2026-04-29 08:48:30] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/password_change.php
+[2026-04-29 08:48:30] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/user_extra.php
+[2026-04-29 08:48:30] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/security_level_set.php
+[2026-04-29 08:48:30] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/credits.php
+[2026-04-29 08:48:30] INFO     scanner.crawler — Crawl complete. 6 URLs found, 0 errors.
+[2026-04-29 08:48:30] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-29 08:48:30] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-29 08:48:30] WARNING  scanner.sqli — [ERROR-BASED SQLi] http://localhost:8080/sqli_1.php?title=%25&action=search | param='title' | payload=''' | matched='you have an error in your sql syntax'
+[2026-04-29 08:48:31] INFO     scanner.sqli — SQLi scan complete. 1 vulnerability/vulnerabilities found.
+[2026-04-29 08:48:31] INFO     scanner.xss — XSS scan started. 6 URL(s) to probe.
+[2026-04-29 08:48:31] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-29 08:48:31] WARNING  scanner.xss — [XSS - URL PARAM] http://localhost:8080/sqli_1.php?title=%25&action=search | param='title'
+[2026-04-29 08:48:31] WARNING  scanner.xss — [XSS - URL PARAM] http://localhost:8080/sqli_1.php?title=%25&action=search | param='action'
+[2026-04-29 08:48:31] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/sqli_1.php?title=%25&action=search | action='http://localhost:8080/sqli_1.php' fields='title'
+[2026-04-29 08:48:31] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/sqli_1.php?title=%25&action=search | action='http://localhost:8080/sqli_1.php' fields='security_level'
+[2026-04-29 08:48:31] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/sqli_1.php?title=%25&action=search | action='http://localhost:8080/sqli_1.php' fields='bug'
+[2026-04-29 08:48:32] INFO     scanner.xss — Scanning: http://localhost:8080/portal.php
+[2026-04-29 08:48:32] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/portal.php | action='http://localhost:8080/portal.php' fields='bug'
+[2026-04-29 08:48:33] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/portal.php | action='http://localhost:8080/portal.php' fields='security_level'
+[2026-04-29 08:48:33] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/portal.php | action='http://localhost:8080/portal.php' fields='bug'
+[2026-04-29 08:48:33] INFO     scanner.xss — Scanning: http://localhost:8080/password_change.php
+[2026-04-29 08:48:34] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/password_change.php | action='http://localhost:8080/password_change.php' fields='password_curr, password_new, password_conf'
+[2026-04-29 08:48:34] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/password_change.php | action='http://localhost:8080/password_change.php' fields='security_level'
+[2026-04-29 08:48:34] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/password_change.php | action='http://localhost:8080/password_change.php' fields='bug'
+[2026-04-29 08:48:35] INFO     scanner.xss — Scanning: http://localhost:8080/user_extra.php
+[2026-04-29 08:48:35] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/user_extra.php | action='http://localhost:8080/user_extra.php' fields='login, email, password, password_conf, secret'
+[2026-04-29 08:48:35] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/user_extra.php | action='http://localhost:8080/user_extra.php' fields='security_level'
+[2026-04-29 08:48:35] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/user_extra.php | action='http://localhost:8080/user_extra.php' fields='bug'
+[2026-04-29 08:48:36] INFO     scanner.xss — Scanning: http://localhost:8080/security_level_set.php
+[2026-04-29 08:48:36] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/security_level_set.php | action='http://localhost:8080/security_level_set.php' fields='security_level'
+[2026-04-29 08:48:36] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/security_level_set.php | action='http://localhost:8080/security_level_set.php' fields='security_level'
+[2026-04-29 08:48:37] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/security_level_set.php | action='http://localhost:8080/security_level_set.php' fields='bug'
+[2026-04-29 08:48:37] INFO     scanner.xss — Scanning: http://localhost:8080/credits.php
+[2026-04-29 08:48:37] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/credits.php | action='http://localhost:8080/credits.php' fields='security_level'
+[2026-04-29 08:48:38] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/credits.php | action='http://localhost:8080/credits.php' fields='bug'
+[2026-04-29 08:48:38] INFO     scanner.xss — XSS scan complete. 19 vulnerability/vulnerabilities found.
+[2026-04-29 08:48:38] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260429_084838.json
+[2026-04-29 08:48:38] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260429_084838.txt
+[2026-04-29 08:58:28] INFO     main — Auto-logging into bWAPP at http://localhost:8080...
+[2026-04-29 08:58:29] INFO     core.utils — bWAPP session created. Cookies: ['PHPSESSID', 'security_level']
+[2026-04-29 08:58:29] INFO     main — Auto-login successful: ['PHPSESSID', 'security_level']
+[2026-04-29 08:58:29] INFO     scanner.crawler — Using provided authenticated session for crawler.
+[2026-04-29 08:58:29] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=%25&action=search (max depth=1)
+[2026-04-29 08:58:29] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-29 08:58:29] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/portal.php
+[2026-04-29 08:58:29] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/password_change.php
+[2026-04-29 08:58:29] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/user_extra.php
+[2026-04-29 08:58:29] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/security_level_set.php
+[2026-04-29 08:58:29] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/credits.php
+[2026-04-29 08:58:29] INFO     scanner.crawler — Crawl complete. 6 URLs found, 0 errors.
+[2026-04-29 08:58:29] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-29 08:58:29] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-29 08:58:29] WARNING  scanner.sqli — [ERROR-BASED SQLi] http://localhost:8080/sqli_1.php?title=%25&action=search | param='title' | payload=''' | matched='you have an error in your sql syntax'
+[2026-04-29 08:58:30] INFO     scanner.sqli — SQLi scan complete. 1 vulnerability/vulnerabilities found.
+[2026-04-29 08:58:30] INFO     scanner.xss — XSS scan started. 6 URL(s) to probe.
+[2026-04-29 08:58:30] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-29 08:58:30] WARNING  scanner.xss — [XSS - URL PARAM] http://localhost:8080/sqli_1.php?title=%25&action=search | param='title'
+[2026-04-29 08:58:30] WARNING  scanner.xss — [XSS - URL PARAM] http://localhost:8080/sqli_1.php?title=%25&action=search | param='action'
+[2026-04-29 08:58:30] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/sqli_1.php?title=%25&action=search | action='http://localhost:8080/sqli_1.php' fields='title'
+[2026-04-29 08:58:30] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/sqli_1.php?title=%25&action=search | action='http://localhost:8080/sqli_1.php' fields='security_level'
+[2026-04-29 08:58:30] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/sqli_1.php?title=%25&action=search | action='http://localhost:8080/sqli_1.php' fields='bug'
+[2026-04-29 08:58:31] INFO     scanner.xss — Scanning: http://localhost:8080/portal.php
+[2026-04-29 08:58:31] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/portal.php | action='http://localhost:8080/portal.php' fields='bug'
+[2026-04-29 08:58:31] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/portal.php | action='http://localhost:8080/portal.php' fields='security_level'
+[2026-04-29 08:58:31] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/portal.php | action='http://localhost:8080/portal.php' fields='bug'
+[2026-04-29 08:58:32] INFO     scanner.xss — Scanning: http://localhost:8080/password_change.php
+[2026-04-29 08:58:32] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/password_change.php | action='http://localhost:8080/password_change.php' fields='password_curr, password_new, password_conf'
+[2026-04-29 08:58:33] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/password_change.php | action='http://localhost:8080/password_change.php' fields='security_level'
+[2026-04-29 08:58:33] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/password_change.php | action='http://localhost:8080/password_change.php' fields='bug'
+[2026-04-29 08:58:33] INFO     scanner.xss — Scanning: http://localhost:8080/user_extra.php
+[2026-04-29 08:58:34] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/user_extra.php | action='http://localhost:8080/user_extra.php' fields='login, email, password, password_conf, secret'
+[2026-04-29 08:58:34] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/user_extra.php | action='http://localhost:8080/user_extra.php' fields='security_level'
+[2026-04-29 08:58:34] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/user_extra.php | action='http://localhost:8080/user_extra.php' fields='bug'
+[2026-04-29 08:58:35] INFO     scanner.xss — Scanning: http://localhost:8080/security_level_set.php
+[2026-04-29 08:58:35] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/security_level_set.php | action='http://localhost:8080/security_level_set.php' fields='security_level'
+[2026-04-29 08:58:35] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/security_level_set.php | action='http://localhost:8080/security_level_set.php' fields='security_level'
+[2026-04-29 08:58:35] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/security_level_set.php | action='http://localhost:8080/security_level_set.php' fields='bug'
+[2026-04-29 08:58:36] INFO     scanner.xss — Scanning: http://localhost:8080/credits.php
+[2026-04-29 08:58:36] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/credits.php | action='http://localhost:8080/credits.php' fields='security_level'
+[2026-04-29 08:58:36] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/credits.php | action='http://localhost:8080/credits.php' fields='bug'
+[2026-04-29 08:58:37] INFO     scanner.xss — XSS scan complete. 19 vulnerability/vulnerabilities found.
+[2026-04-29 08:58:37] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260429_085837.json
+[2026-04-29 08:58:37] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260429_085837.txt
+[2026-04-30 14:50:41] INFO     main — Auto-logging into bWAPP at http://localhost:8080...
+[2026-04-30 14:53:30] INFO     main — Auto-logging into bWAPP at http://localhost:8080...
+[2026-04-30 14:53:30] INFO     core.utils — bWAPP session created. Cookies: []
+[2026-04-30 14:53:30] INFO     main — Auto-login successful: ['security_level']
+[2026-04-30 14:53:30] INFO     scanner.crawler — Using provided authenticated session for crawler.
+[2026-04-30 14:53:30] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=%25&action=search (max depth=1)
+[2026-04-30 14:53:30] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-30 14:53:30] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-30 14:53:30] INFO     scanner.crawler — Crawl complete. 1 URLs found, 0 errors.
+[2026-04-30 14:53:30] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-30 14:53:30] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-30 14:53:31] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-30 14:53:31] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-04-30 14:53:31] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-30 14:53:31] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-04-30 14:53:31] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260430_145331.json
+[2026-04-30 14:53:31] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260430_145331.txt
+[2026-04-30 14:55:28] INFO     main — Auto-logging into bWAPP at http://localhost:8080...
+[2026-04-30 14:55:28] INFO     core.utils — bWAPP session created. Cookies: ['PHPSESSID', 'security_level']
+[2026-04-30 14:55:28] INFO     main — Auto-login successful: ['PHPSESSID', 'security_level']
+[2026-04-30 14:55:28] INFO     scanner.crawler — Using provided authenticated session for crawler.
+[2026-04-30 14:55:28] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=%25&action=search (max depth=1)
+[2026-04-30 14:55:28] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-30 14:55:29] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/portal.php
+[2026-04-30 14:55:29] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/password_change.php
+[2026-04-30 14:55:29] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/user_extra.php
+[2026-04-30 14:55:29] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/security_level_set.php
+[2026-04-30 14:55:29] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/credits.php
+[2026-04-30 14:55:29] INFO     scanner.crawler — Crawl complete. 6 URLs found, 0 errors.
+[2026-04-30 14:55:29] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-04-30 14:55:29] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-30 14:55:29] WARNING  scanner.sqli — [ERROR-BASED SQLi] http://localhost:8080/sqli_1.php?title=%25&action=search | param='title' | payload=''' | matched='you have an error in your sql syntax'
+[2026-04-30 14:55:30] INFO     scanner.sqli — SQLi scan complete. 1 vulnerability/vulnerabilities found.
+[2026-04-30 14:55:30] INFO     scanner.xss — XSS scan started. 6 URL(s) to probe.
+[2026-04-30 14:55:30] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-04-30 14:55:30] WARNING  scanner.xss — [XSS - URL PARAM] http://localhost:8080/sqli_1.php?title=%25&action=search | param='title'
+[2026-04-30 14:55:30] WARNING  scanner.xss — [XSS - URL PARAM] http://localhost:8080/sqli_1.php?title=%25&action=search | param='action'
+[2026-04-30 14:55:30] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/sqli_1.php?title=%25&action=search | action='http://localhost:8080/sqli_1.php' fields='title'
+[2026-04-30 14:55:30] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/sqli_1.php?title=%25&action=search | action='http://localhost:8080/sqli_1.php' fields='security_level'
+[2026-04-30 14:55:30] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/sqli_1.php?title=%25&action=search | action='http://localhost:8080/sqli_1.php' fields='bug'
+[2026-04-30 14:55:31] INFO     scanner.xss — Scanning: http://localhost:8080/portal.php
+[2026-04-30 14:55:31] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/portal.php | action='http://localhost:8080/portal.php' fields='bug'
+[2026-04-30 14:55:31] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/portal.php | action='http://localhost:8080/portal.php' fields='security_level'
+[2026-04-30 14:55:31] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/portal.php | action='http://localhost:8080/portal.php' fields='bug'
+[2026-04-30 14:55:32] INFO     scanner.xss — Scanning: http://localhost:8080/password_change.php
+[2026-04-30 14:55:32] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/password_change.php | action='http://localhost:8080/password_change.php' fields='password_curr, password_new, password_conf'
+[2026-04-30 14:55:32] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/password_change.php | action='http://localhost:8080/password_change.php' fields='security_level'
+[2026-04-30 14:55:33] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/password_change.php | action='http://localhost:8080/password_change.php' fields='bug'
+[2026-04-30 14:55:33] INFO     scanner.xss — Scanning: http://localhost:8080/user_extra.php
+[2026-04-30 14:55:33] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/user_extra.php | action='http://localhost:8080/user_extra.php' fields='login, email, password, password_conf, secret'
+[2026-04-30 14:55:34] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/user_extra.php | action='http://localhost:8080/user_extra.php' fields='security_level'
+[2026-04-30 14:55:34] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/user_extra.php | action='http://localhost:8080/user_extra.php' fields='bug'
+[2026-04-30 14:55:34] INFO     scanner.xss — Scanning: http://localhost:8080/security_level_set.php
+[2026-04-30 14:55:35] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/security_level_set.php | action='http://localhost:8080/security_level_set.php' fields='security_level'
+[2026-04-30 14:55:35] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/security_level_set.php | action='http://localhost:8080/security_level_set.php' fields='security_level'
+[2026-04-30 14:55:35] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/security_level_set.php | action='http://localhost:8080/security_level_set.php' fields='bug'
+[2026-04-30 14:55:36] INFO     scanner.xss — Scanning: http://localhost:8080/credits.php
+[2026-04-30 14:55:36] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/credits.php | action='http://localhost:8080/credits.php' fields='security_level'
+[2026-04-30 14:55:36] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/credits.php | action='http://localhost:8080/credits.php' fields='bug'
+[2026-04-30 14:55:37] INFO     scanner.xss — XSS scan complete. 19 vulnerability/vulnerabilities found.
+[2026-04-30 14:55:37] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260430_145537.json
+[2026-04-30 14:55:37] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260430_145537.txt

@@ -1,0 +1,24 @@
+{
+  "wasp_version": "1.0",
+  "target": "http://localhost:8080/sqli_1.php?title=test&action=search",
+  "start_time": "2026-04-28T17:08:15.614870",
+  "end_time": "2026-04-28T17:08:20.988483",
+  "summary": {
+    "urls_crawled": 7,
+    "vulnerabilities": 0,
+    "open_ports": 0,
+    "errors": 0
+  },
+  "urls_crawled": [
+    "http://localhost:8080/sqli_1.php?title=test&action=search",
+    "http://localhost:8080/portal.php",
+    "http://localhost:8080/password_change.php",
+    "http://localhost:8080/user_extra.php",
+    "http://localhost:8080/security_level_set.php",
+    "http://localhost:8080/reset.php",
+    "http://localhost:8080/credits.php"
+  ],
+  "vulnerabilities": [],
+  "open_ports": [],
+  "errors": []
+}

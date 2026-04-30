@@ -1,0 +1,18 @@
+{
+  "wasp_version": "1.0",
+  "target": "http://localhost:8080/sqli_1.php?title=test&action=search",
+  "start_time": "2026-04-29T08:24:23.493781",
+  "end_time": "2026-04-29T08:24:24.921662",
+  "summary": {
+    "urls_crawled": 1,
+    "vulnerabilities": 0,
+    "open_ports": 0,
+    "errors": 0
+  },
+  "urls_crawled": [
+    "http://localhost:8080/sqli_1.php?title=test&action=search"
+  ],
+  "vulnerabilities": [],
+  "open_ports": [],
+  "errors": []
+}
