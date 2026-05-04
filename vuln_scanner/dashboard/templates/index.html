@@ -1,0 +1,1057 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>WASP — Web Application Security Probe</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;700;800&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg:       #080c14;
+      --surface:  #0d1420;
+      --surface2: #121b2e;
+      --surface3: #1a2540;
+      --border:   #1e2d4a;
+      --glow:     #00ffe0;
+      --glow2:    #ff3e6c;
+      --glow3:    #7c4dff;
+      --text:     #cdd9f0;
+      --text-dim: #4a5f80;
+      --critical: #ff1744;
+      --high:     #ff6d00;
+      --medium:   #ffd600;
+      --low:      #00e676;
+      --info:     #40c4ff;
+      --radius:   10px;
+      --mono:     'Space Mono', monospace;
+      --sans:     'Syne', sans-serif;
+    }
+
+    /* ── Scanline overlay ─────────────────────────────────────────────────── */
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: repeating-linear-gradient(
+        0deg,
+        transparent,
+        transparent 2px,
+        rgba(0,255,224,0.015) 2px,
+        rgba(0,255,224,0.015) 4px
+      );
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* ── Animated grid background ─────────────────────────────────────────── */
+    .bg-grid {
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,255,224,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,255,224,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      z-index: 0;
+      pointer-events: none;
+    }
+
+    /* ── Navbar ───────────────────────────────────────────────────────────── */
+    .navbar {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(8,12,20,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+      padding: 0 2rem;
+      height: 60px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      background: linear-gradient(135deg, var(--glow), var(--glow3));
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      box-shadow: 0 0 20px rgba(0,255,224,0.3);
+    }
+
+    .logo-text {
+      font-family: var(--sans);
+      font-weight: 800;
+      font-size: 1.3rem;
+      letter-spacing: 3px;
+      background: linear-gradient(90deg, var(--glow), var(--glow3));
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .logo-sub {
+      font-family: var(--mono);
+      font-size: 0.6rem;
+      color: var(--text-dim);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+    }
+
+    .nav-status {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--glow);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .nav-status::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--glow);
+      box-shadow: 0 0 8px var(--glow);
+      animation: blink 2s infinite;
+    }
+
+    @keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+
+    /* ── Layout ───────────────────────────────────────────────────────────── */
+    .main {
+      position: relative;
+      z-index: 1;
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* ── Tabs ─────────────────────────────────────────────────────────────── */
+    .tabs {
+      display: flex;
+      gap: 0;
+      margin-bottom: 2rem;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .tab-btn {
+      background: none;
+      border: none;
+      border-bottom: 2px solid transparent;
+      color: var(--text-dim);
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      padding: 0.8rem 1.4rem;
+      cursor: pointer;
+      transition: all 0.25s;
+      margin-bottom: -1px;
+    }
+
+    .tab-btn:hover { color: var(--text); }
+
+    .tab-btn.active {
+      color: var(--glow);
+      border-bottom-color: var(--glow);
+      text-shadow: 0 0 12px rgba(0,255,224,0.5);
+    }
+
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; animation: fadeIn 0.3s ease; }
+
+    @keyframes fadeIn { from{opacity:0;transform:translateY(8px)} to{opacity:1;transform:none} }
+
+    /* ── Cards ────────────────────────────────────────────────────────────── */
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 1.5rem;
+      position: relative;
+      overflow: hidden;
+      transition: border-color 0.3s;
+    }
+
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, var(--glow), transparent);
+      opacity: 0.4;
+    }
+
+    .card:hover { border-color: rgba(0,255,224,0.2); }
+
+    .card-title {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      color: var(--glow);
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card-title .icon { font-size: 1rem; }
+
+    /* ── Form elements ────────────────────────────────────────────────────── */
+    .form-group { margin-bottom: 1.1rem; }
+
+    label {
+      display: block;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      font-weight: 700;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-bottom: 0.4rem;
+    }
+
+    input[type="text"],
+    input[type="url"],
+    input[type="password"],
+    input[type="number"],
+    select {
+      width: 100%;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      color: var(--text);
+      padding: 0.6rem 0.9rem;
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      outline: none;
+      transition: all 0.2s;
+    }
+
+    input:focus, select:focus {
+      border-color: var(--glow);
+      box-shadow: 0 0 0 2px rgba(0,255,224,0.1), 0 0 16px rgba(0,255,224,0.08);
+      background: var(--surface3);
+    }
+
+    select option { background: var(--surface2); }
+
+    .checkbox-row {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      cursor: pointer;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--text-dim);
+      transition: color 0.2s;
+    }
+
+    .checkbox-row:hover { color: var(--text); }
+
+    input[type="checkbox"] {
+      width: 14px;
+      height: 14px;
+      accent-color: var(--glow);
+      cursor: pointer;
+    }
+
+    /* ── Buttons ──────────────────────────────────────────────────────────── */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 0.6rem 1.4rem;
+      border-radius: 6px;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      font-weight: 700;
+      letter-spacing: 1.5px;
+      text-transform: uppercase;
+      border: none;
+      cursor: pointer;
+      transition: all 0.2s;
+      text-decoration: none;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--glow), var(--glow3));
+      color: var(--bg);
+      box-shadow: 0 0 20px rgba(0,255,224,0.25);
+    }
+
+    .btn-primary:hover {
+      box-shadow: 0 0 30px rgba(0,255,224,0.45);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary:disabled {
+      opacity: 0.4;
+      cursor: not-allowed;
+      transform: none;
+      box-shadow: none;
+    }
+
+    .btn-danger {
+      background: linear-gradient(135deg, var(--glow2), #c0392b);
+      color: white;
+      box-shadow: 0 0 16px rgba(255,62,108,0.3);
+    }
+
+    .btn-danger:hover { box-shadow: 0 0 24px rgba(255,62,108,0.5); transform: translateY(-1px); }
+
+    .btn-ghost {
+      background: transparent;
+      color: var(--text-dim);
+      border: 1px solid var(--border);
+    }
+
+    .btn-ghost:hover { border-color: var(--glow); color: var(--glow); }
+
+    .btn-sm { padding: 0.3rem 0.8rem; font-size: 0.68rem; }
+
+    /* ── Grid ─────────────────────────────────────────────────────────────── */
+    .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+    .grid-4 { display: grid; grid-template-columns: repeat(4, 1fr); gap: 1rem; }
+
+    @media(max-width:900px) {
+      .grid-2, .grid-4 { grid-template-columns: 1fr; }
+    }
+
+    /* ── Stat boxes ───────────────────────────────────────────────────────── */
+    .stat-box {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+    }
+
+    .stat-box::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(circle at 50% 0%, rgba(0,255,224,0.05), transparent 70%);
+    }
+
+    .stat-box:hover { border-color: rgba(0,255,224,0.3); transform: translateY(-2px); }
+
+    .stat-value {
+      font-family: var(--mono);
+      font-size: 2.4rem;
+      font-weight: 700;
+      color: var(--glow);
+      line-height: 1;
+      text-shadow: 0 0 20px rgba(0,255,224,0.4);
+    }
+
+    .stat-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      margin-top: 6px;
+    }
+
+    /* ── Severity badges ──────────────────────────────────────────────────── */
+    .badge {
+      display: inline-block;
+      padding: 0.18rem 0.55rem;
+      border-radius: 3px;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+    }
+
+    .badge-critical { background: rgba(255,23,68,0.15);  color: var(--critical); border: 1px solid rgba(255,23,68,0.3); }
+    .badge-high     { background: rgba(255,109,0,0.15);  color: var(--high);     border: 1px solid rgba(255,109,0,0.3); }
+    .badge-medium   { background: rgba(255,214,0,0.12);  color: var(--medium);   border: 1px solid rgba(255,214,0,0.25); }
+    .badge-low      { background: rgba(0,230,118,0.12);  color: var(--low);      border: 1px solid rgba(0,230,118,0.25); }
+    .badge-info     { background: rgba(64,196,255,0.12); color: var(--info);     border: 1px solid rgba(64,196,255,0.25); }
+    .badge-complete { background: rgba(0,230,118,0.12);  color: var(--low);      border: 1px solid rgba(0,230,118,0.25); }
+    .badge-running  { background: rgba(255,214,0,0.12);  color: var(--medium);   border: 1px solid rgba(255,214,0,0.25); }
+    .badge-error    { background: rgba(255,23,68,0.15);  color: var(--critical); border: 1px solid rgba(255,23,68,0.3); }
+    .badge-stopped  { background: rgba(74,95,128,0.15);  color: var(--text-dim); border: 1px solid var(--border); }
+
+    /* ── Progress log ─────────────────────────────────────────────────────── */
+    .log-box {
+      background: var(--bg);
+      border: 1px solid var(--border);
+      border-radius: 6px;
+      padding: 1rem;
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--glow);
+      min-height: 220px;
+      max-height: 340px;
+      overflow-y: auto;
+      scrollbar-width: thin;
+      scrollbar-color: var(--border) transparent;
+    }
+
+    .log-box::-webkit-scrollbar { width: 4px; }
+    .log-box::-webkit-scrollbar-thumb { background: var(--border); border-radius: 2px; }
+
+    .log-line { margin-bottom: 4px; line-height: 1.5; }
+    .log-line::before { content: '> '; color: var(--text-dim); }
+    .log-line.err   { color: var(--critical); }
+    .log-line.warn  { color: var(--medium); }
+    .log-line.info  { color: var(--info); }
+    .log-line.done  { color: var(--low); }
+    .log-line.sub   { color: var(--text-dim); padding-left: 1rem; }
+    .log-line.sub::before { content: '  '; }
+
+    /* ── Progress bar ─────────────────────────────────────────────────────── */
+    .progress-wrap {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 999px;
+      height: 6px;
+      overflow: hidden;
+      margin: 0.8rem 0;
+      position: relative;
+    }
+
+    .progress-fill {
+      height: 100%;
+      background: linear-gradient(90deg, var(--glow), var(--glow3));
+      border-radius: 999px;
+      transition: width 0.5s cubic-bezier(0.4,0,0.2,1);
+      position: relative;
+    }
+
+    .progress-fill::after {
+      content: '';
+      position: absolute;
+      right: 0;
+      top: -2px;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: var(--glow);
+      box-shadow: 0 0 10px var(--glow);
+    }
+
+    .progress-meta {
+      display: flex;
+      justify-content: space-between;
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--text-dim);
+      margin-top: 4px;
+    }
+
+    /* ── Stage indicators ─────────────────────────────────────────────────── */
+    .stages {
+      display: flex;
+      gap: 6px;
+      flex-wrap: wrap;
+      margin: 0.8rem 0;
+    }
+
+    .stage-pill {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      padding: 0.2rem 0.6rem;
+      border-radius: 3px;
+      border: 1px solid var(--border);
+      color: var(--text-dim);
+      background: var(--surface2);
+      transition: all 0.3s;
+    }
+
+    .stage-pill.active {
+      border-color: var(--glow);
+      color: var(--glow);
+      background: rgba(0,255,224,0.08);
+      box-shadow: 0 0 10px rgba(0,255,224,0.15);
+    }
+
+    .stage-pill.done {
+      border-color: var(--low);
+      color: var(--low);
+      background: rgba(0,230,118,0.08);
+    }
+
+    /* ── Vuln table ───────────────────────────────────────────────────────── */
+    .vtable { width: 100%; border-collapse: collapse; font-size: 0.82rem; }
+
+    .vtable th {
+      background: var(--surface2);
+      padding: 0.6rem 0.9rem;
+      text-align: left;
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--text-dim);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .vtable td {
+      padding: 0.7rem 0.9rem;
+      border-bottom: 1px solid rgba(30,45,74,0.6);
+      vertical-align: middle;
+    }
+
+    .vtable tr:hover td { background: rgba(0,255,224,0.03); }
+
+    .vtable .url-cell {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--info);
+      max-width: 260px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .vtable .param-cell {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--medium);
+    }
+
+    .vtable .fix-row td {
+      background: rgba(0,230,118,0.03);
+      font-size: 0.75rem;
+      color: var(--text-dim);
+      border-bottom: 1px solid var(--border);
+      padding: 0.4rem 0.9rem 0.4rem 2rem;
+      font-family: var(--mono);
+    }
+
+    .fix-label {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      color: var(--low);
+      margin-right: 6px;
+    }
+
+    /* ── History ──────────────────────────────────────────────────────────── */
+    .history-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0.9rem 1rem;
+      border-bottom: 1px solid var(--border);
+      transition: background 0.2s;
+    }
+
+    .history-item:hover { background: var(--surface2); }
+    .history-item:last-child { border-bottom: none; }
+
+    .history-target {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      color: var(--info);
+    }
+
+    .history-meta {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--text-dim);
+      margin-top: 3px;
+    }
+
+    /* ── Status dot ───────────────────────────────────────────────────────── */
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: 6px;
+    }
+
+    .dot.running  { background: var(--medium); animation: pulse 1.2s infinite; box-shadow: 0 0 8px var(--medium); }
+    .dot.complete { background: var(--low); box-shadow: 0 0 6px var(--low); }
+    .dot.error    { background: var(--critical); }
+    .dot.stopped  { background: var(--text-dim); }
+
+    @keyframes pulse { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.8)} }
+
+    /* ── Misc ─────────────────────────────────────────────────────────────── */
+    .hidden   { display: none !important; }
+    .flex     { display: flex; }
+    .gap-1    { gap: 0.5rem; }
+    .gap-2    { gap: 1rem; }
+    .items-center   { align-items: center; }
+    .justify-between { justify-content: space-between; }
+    .mt-1     { margin-top: 0.5rem; }
+    .mt-2     { margin-top: 1rem; }
+    .text-dim { color: var(--text-dim); }
+    .text-sm  { font-size: 0.8rem; }
+    .divider  { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+    .empty    { text-align: center; padding: 3rem; color: var(--text-dim); font-family: var(--mono); font-size: 0.8rem; letter-spacing: 1px; }
+  </style>
+</head>
+<body>
+<div class="bg-grid"></div>
+
+<!-- Navbar -->
+<nav class="navbar">
+  <div class="logo">
+    <div class="logo-icon">🐝</div>
+    <div>
+      <div class="logo-text">WASP</div>
+      <div class="logo-sub">Web Application Security Probe</div>
+    </div>
+  </div>
+  <div class="nav-status" id="nav-status">SYSTEM READY</div>
+</nav>
+
+<div class="main">
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('scan',this)">⬡ New Scan</button>
+    <button class="tab-btn" onclick="switchTab('results',this)">◈ Results</button>
+    <button class="tab-btn" onclick="switchTab('history',this)">◎ History</button>
+  </div>
+
+  <!-- ── TAB 1: Scan ───────────────────────────────────────────────────────── -->
+  <div class="tab-panel active" id="tab-scan">
+    <div class="grid-2">
+
+      <!-- Config -->
+      <div class="card">
+        <div class="card-title"><span class="icon">⬡</span> Scan Configuration</div>
+
+        <div class="form-group">
+          <label>Target URL</label>
+          <input type="url" id="target" placeholder="http://localhost:8080/sqli_1.php?title=%25&action=search"/>
+        </div>
+
+        <div class="grid-2" style="gap:1rem">
+          <div class="form-group">
+            <label>Crawl Depth</label>
+            <select id="depth">
+              <option value="1">1 — Shallow</option>
+              <option value="2" selected>2 — Normal</option>
+              <option value="3">3 — Deep</option>
+              <option value="4">4 — Very Deep</option>
+            </select>
+          </div>
+          <div class="form-group">
+            <label>App Type</label>
+            <select id="app-type">
+              <option value="none">None</option>
+              <option value="dvwa">DVWA</option>
+              <option value="bwapp">bWAPP</option>
+            </select>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label>Session Cookie</label>
+          <input type="text" id="cookie" placeholder="PHPSESSID=abc123,security_level=0"/>
+        </div>
+
+        <div class="form-group">
+          <label>Report Format</label>
+          <select id="output">
+            <option value="both" selected>JSON + TXT + PDF</option>
+            <option value="json">JSON Only</option>
+            <option value="txt">TXT Only</option>
+          </select>
+        </div>
+
+        <hr class="divider"/>
+
+        <div class="flex gap-2 mt-1" style="flex-wrap:wrap">
+          <label class="checkbox-row">
+            <input type="checkbox" id="skip-ports" checked/>
+            Skip port scan
+          </label>
+          <label class="checkbox-row">
+            <input type="checkbox" id="use-ai"/>
+            AI analysis
+          </label>
+        </div>
+
+        <div class="flex gap-1 mt-2">
+          <button class="btn btn-primary" id="btn-start" onclick="startScan()">▶ LAUNCH SCAN</button>
+          <button class="btn btn-danger hidden" id="btn-stop" onclick="stopScan()">■ ABORT</button>
+        </div>
+      </div>
+
+      <!-- Progress -->
+      <div class="card">
+        <div class="card-title"><span class="icon">◈</span> Scan Progress</div>
+
+        <!-- Stage pills -->
+        <div class="stages">
+          <div class="stage-pill" id="stage-auth">AUTH</div>
+          <div class="stage-pill" id="stage-crawler">CRAWL</div>
+          <div class="stage-pill" id="stage-forms">FORMS</div>
+          <div class="stage-pill" id="stage-sqli">SQLI</div>
+          <div class="stage-pill" id="stage-xss">XSS</div>
+          <div class="stage-pill" id="stage-ports">PORTS</div>
+          <div class="stage-pill" id="stage-ai">AI</div>
+          <div class="stage-pill" id="stage-reports">REPORT</div>
+        </div>
+
+        <div class="progress-wrap">
+          <div class="progress-fill" id="progress-bar" style="width:0%"></div>
+        </div>
+
+        <div class="progress-meta">
+          <span id="progress-stage">Waiting for scan...</span>
+          <span id="progress-pct">0%</span>
+        </div>
+
+        <div class="log-box" id="log-box">
+          <div class="log-line text-dim" style="color:var(--text-dim)">System initialized. Awaiting target.</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Stats (post-scan) -->
+    <div class="card hidden" id="quick-stats">
+      <div class="card-title flex justify-between">
+        <span><span class="icon">◎</span> Scan Complete</span>
+        <div class="flex gap-1" id="download-buttons"></div>
+      </div>
+      <div class="grid-4">
+        <div class="stat-box">
+          <div class="stat-value" id="stat-urls">0</div>
+          <div class="stat-label">URLs Crawled</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="stat-vulns" style="color:var(--critical);text-shadow:0 0 20px rgba(255,23,68,0.4)">0</div>
+          <div class="stat-label">Vulnerabilities</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="stat-ports" style="color:var(--medium);text-shadow:0 0 20px rgba(255,214,0,0.3)">0</div>
+          <div class="stat-label">Open Ports</div>
+        </div>
+        <div class="stat-box">
+          <div class="stat-value" id="stat-errors" style="color:var(--text-dim);text-shadow:none">0</div>
+          <div class="stat-label">Errors</div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TAB 2: Results ────────────────────────────────────────────────────── -->
+  <div class="tab-panel" id="tab-results">
+    <div class="card">
+      <div class="card-title"><span class="icon">◈</span> Vulnerability Findings</div>
+      <div id="results-container">
+        <div class="empty">NO SCAN DATA — RUN A SCAN FIRST</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ── TAB 3: History ────────────────────────────────────────────────────── -->
+  <div class="tab-panel" id="tab-history">
+    <div class="card">
+      <div class="card-title flex justify-between">
+        <span><span class="icon">◎</span> Scan History</span>
+        <button class="btn btn-ghost btn-sm" onclick="loadHistory()">↻ REFRESH</button>
+      </div>
+      <div id="history-container">
+        <div class="empty">NO HISTORY YET</div>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<script>
+let activeScanId = null;
+let eventSource  = null;
+let activeStages = [];
+let stageMap     = {auth:10,crawler:28,forms:38,sqli:56,xss:72,ports:82,ai:92,reports:100};
+
+function switchTab(name, btn) {
+  document.querySelectorAll(".tab-btn").forEach(b => b.classList.remove("active"));
+  document.querySelectorAll(".tab-panel").forEach(p => p.classList.remove("active"));
+  if (btn) btn.classList.add("active");
+  else document.querySelectorAll(".tab-btn")[["scan","results","history"].indexOf(name)].classList.add("active");
+  document.getElementById("tab-" + name).classList.add("active");
+  if (name === "history") loadHistory();
+}
+
+async function startScan() {
+  const target = document.getElementById("target").value.trim();
+  if (!target) { alert("Please enter a target URL"); return; }
+
+  resetUI();
+  document.getElementById("btn-start").disabled = true;
+  document.getElementById("btn-stop").classList.remove("hidden");
+  document.getElementById("nav-status").textContent = "SCANNING...";
+  document.getElementById("quick-stats").classList.add("hidden");
+
+  logLine("info", "Initiating scan: " + target);
+
+  const config = {
+    target, depth: parseInt(document.getElementById("depth").value),
+    skip_ports: document.getElementById("skip-ports").checked,
+    app_type: document.getElementById("app-type").value,
+    cookie: document.getElementById("cookie").value.trim(),
+    use_ai: document.getElementById("use-ai").checked,
+    output: document.getElementById("output").value,
+  };
+
+  try {
+    const r = await fetch("/api/scan/start", {
+      method:"POST", headers:{"Content-Type":"application/json"}, body:JSON.stringify(config)
+    });
+    const d = await r.json();
+    if (d.error) { logLine("err","Error: " + d.error); resetButtons(); return; }
+    activeScanId = d.scan_id;
+    subscribeProgress(activeScanId);
+  } catch(e) {
+    logLine("err","Failed to start: " + e);
+    resetButtons();
+  }
+}
+
+function subscribeProgress(scanId) {
+  if (eventSource) eventSource.close();
+  eventSource = new EventSource(`/api/scan/${scanId}/progress`);
+
+  eventSource.onmessage = function(e) {
+    const msg = JSON.parse(e.data);
+    if (msg.type === "heartbeat") return;
+
+    if (msg.type === "progress") {
+      const pct = stageMap[msg.stage] || 50;
+      setProgress(pct, msg.stage, msg.message);
+      setStage(msg.stage, "active");
+      logLine("info", "[" + msg.stage.toUpperCase() + "] " + msg.message);
+      if (msg.data && msg.data.urls) {
+        msg.data.urls.slice(0,4).forEach(u => logLine("sub", u));
+      }
+    }
+
+    if (msg.type === "complete") {
+      setProgress(100, "done", "Scan complete");
+      Object.keys(stageMap).forEach(s => setStage(s,"done"));
+      logLine("done", "✓ SCAN COMPLETE — " + msg.summary.vulns + " vulnerabilities | " + msg.summary.urls + " URLs");
+      document.getElementById("nav-status").textContent = "SCAN COMPLETE";
+      loadScanResult(scanId, msg.summary);
+      resetButtons();
+      eventSource.close();
+    }
+
+    if (msg.type === "error") {
+      logLine("err", "✗ ERROR: " + msg.message);
+      document.getElementById("nav-status").textContent = "SCAN FAILED";
+      resetButtons();
+      eventSource.close();
+    }
+  };
+}
+
+async function loadScanResult(scanId, summary) {
+  document.getElementById("stat-urls").textContent   = summary.urls;
+  document.getElementById("stat-vulns").textContent  = summary.vulns;
+  document.getElementById("stat-ports").textContent  = summary.ports;
+  document.getElementById("stat-errors").textContent = summary.errors;
+  document.getElementById("quick-stats").classList.remove("hidden");
+
+  const r      = await fetch(`/api/scan/${scanId}/result`);
+  const result = await r.json();
+
+  const dlBtns = document.getElementById("download-buttons");
+  dlBtns.innerHTML = "";
+  Object.keys(result.reports||{}).forEach(type => {
+    const btn = document.createElement("button");
+    btn.className = "btn btn-ghost btn-sm";
+    btn.textContent = "⬇ " + type.toUpperCase();
+    btn.onclick = () => window.open(`/api/scan/${scanId}/download/${type}`);
+    dlBtns.appendChild(btn);
+  });
+
+  renderResults(result);
+}
+
+function renderResults(result) {
+  const c = document.getElementById("results-container");
+  const vulns = result.vulnerabilities || [];
+
+  if (!vulns.length) {
+    c.innerHTML = '<div class="empty">NO VULNERABILITIES FOUND</div>';
+    return;
+  }
+
+  const bySev = {};
+  vulns.forEach(v => { if(!bySev[v.severity]) bySev[v.severity]=[]; bySev[v.severity].push(v); });
+  const order = ["CRITICAL","HIGH","MEDIUM","LOW","INFO"];
+
+  let html = `<div class="flex gap-1 mt-1" style="flex-wrap:wrap;margin-bottom:1.2rem">
+    ${order.map(s=>(bySev[s]||[]).length?`<span class="badge badge-${s.toLowerCase()}">${s}: ${bySev[s].length}</span>`:"").join("")}
+  </div>
+  <table class="vtable"><thead><tr>
+    <th>#</th><th>Severity</th><th>Type</th><th>URL</th><th>Parameter</th><th>Evidence</th>
+  </tr></thead><tbody>`;
+
+  let idx = 1;
+  order.forEach(sev => {
+    (bySev[sev]||[]).forEach(v => {
+      html += `<tr>
+        <td style="font-family:var(--mono);font-size:0.7rem;color:var(--text-dim)">${idx++}</td>
+        <td><span class="badge badge-${sev.toLowerCase()}">${sev}</span></td>
+        <td style="font-size:0.8rem;font-weight:700">${v.type}</td>
+        <td class="url-cell" title="${v.url}">${v.url}</td>
+        <td class="param-cell">${v.parameter}</td>
+        <td style="font-family:var(--mono);font-size:0.7rem;color:var(--text-dim)">${(v.evidence||"").slice(0,55)}</td>
+      </tr>`;
+      if (v.remediation) html += `<tr class="fix-row"><td colspan="6">
+        <span class="fix-label">FIX</span>${v.remediation.slice(0,200)}
+      </td></tr>`;
+    });
+  });
+
+  html += "</tbody></table>";
+  c.innerHTML = html;
+
+  // Switch to results tab
+  switchTab("results");
+}
+
+async function loadHistory() {
+  const c = document.getElementById("history-container");
+  c.innerHTML = '<div class="empty">LOADING...</div>';
+  try {
+    const scans = await (await fetch("/api/scans")).json();
+    if (!scans.length) { c.innerHTML = '<div class="empty">NO HISTORY YET</div>'; return; }
+    c.innerHTML = scans.map(s => `
+      <div class="history-item">
+        <div>
+          <div class="flex items-center gap-1">
+            <span class="dot ${s.status}"></span>
+            <span class="history-target">${s.target}</span>
+          </div>
+          <div class="history-meta">
+            ${s.started_at.slice(0,19).replace("T"," ")}
+            &nbsp;·&nbsp; ${s.url_count} urls
+            &nbsp;·&nbsp; ${s.vuln_count} findings
+          </div>
+        </div>
+        <div class="flex gap-1 items-center">
+          <span class="badge badge-${s.status}">${s.status}</span>
+          ${s.status==='complete'?`<button class="btn btn-ghost btn-sm" onclick="viewScan('${s.id}')">VIEW</button>`:""}
+        </div>
+      </div>`).join("");
+  } catch(e) {
+    c.innerHTML = `<div class="empty">ERROR: ${e}</div>`;
+  }
+}
+
+async function viewScan(scanId) {
+  const result = await (await fetch(`/api/scan/${scanId}/result`)).json();
+  renderResults(result);
+  document.getElementById("stat-urls").textContent   = result.summary.urls_crawled;
+  document.getElementById("stat-vulns").textContent  = result.summary.vulnerabilities;
+  document.getElementById("stat-ports").textContent  = result.summary.open_ports;
+  document.getElementById("stat-errors").textContent = result.summary.errors;
+  document.getElementById("quick-stats").classList.remove("hidden");
+
+  const dlBtns = document.getElementById("download-buttons");
+  dlBtns.innerHTML = "";
+  Object.keys(result.reports||{}).forEach(type => {
+    const btn = document.createElement("button");
+    btn.className = "btn btn-ghost btn-sm";
+    btn.textContent = "⬇ " + type.toUpperCase();
+    btn.onclick = () => window.open(`/api/scan/${scanId}/download/${type}`);
+    dlBtns.appendChild(btn);
+  });
+}
+
+async function stopScan() {
+  if (!activeScanId) return;
+  await fetch(`/api/scan/${activeScanId}/stop`, {method:"POST"});
+  logLine("warn","Abort requested.");
+  resetButtons();
+  if (eventSource) eventSource.close();
+}
+
+function setProgress(pct, stage, msg) {
+  document.getElementById("progress-bar").style.width = pct + "%";
+  document.getElementById("progress-pct").textContent  = pct + "%";
+  document.getElementById("progress-stage").textContent = msg;
+}
+
+function setStage(name, state) {
+  const el = document.getElementById("stage-" + name);
+  if (!el) return;
+  el.className = "stage-pill " + state;
+  if (state === "active") {
+    // mark previous as done
+    const stages = Object.keys(stageMap);
+    const idx = stages.indexOf(name);
+    for (let i = 0; i < idx; i++) {
+      const prev = document.getElementById("stage-" + stages[i]);
+      if (prev) prev.className = "stage-pill done";
+    }
+  }
+}
+
+function resetUI() {
+  document.getElementById("log-box").innerHTML = "";
+  setProgress(0, "starting", "Initializing...");
+  Object.keys(stageMap).forEach(s => {
+    const el = document.getElementById("stage-"+s);
+    if (el) el.className = "stage-pill";
+  });
+}
+
+function resetButtons() {
+  document.getElementById("btn-start").disabled = false;
+  document.getElementById("btn-stop").classList.add("hidden");
+}
+
+function logLine(type, text) {
+  const box  = document.getElementById("log-box");
+  const line = document.createElement("div");
+  line.className = "log-line " + (type||"");
+  const t = new Date().toLocaleTimeString("en-GB");
+  line.textContent = `[${t}] ${text}`;
+  box.appendChild(line);
+  box.scrollTop = box.scrollHeight;
+}
+
+loadHistory();
+</script>
+</body>
+</html>

@@ -954,3 +954,141 @@
 [2026-04-30 14:55:37] INFO     scanner.xss — XSS scan complete. 19 vulnerability/vulnerabilities found.
 [2026-04-30 14:55:37] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260430_145537.json
 [2026-04-30 14:55:37] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260430_145537.txt
+[2026-05-03 20:39:15] INFO     __main__ — Scan 20260503_203915_015187 started for target: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-03 20:39:16] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=%25&action=search (max depth=2)
+[2026-05-03 20:39:16] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-03 20:39:21] WARNING  scanner.crawler — Connection error: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-03 20:39:21] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-03 20:39:21] INFO     scanner.crawler — Crawl complete. 1 URLs found, 1 errors.
+[2026-05-03 20:39:25] INFO     scanner.forms — Form crawl complete. 0 form(s) found across 1 URL(s).
+[2026-05-03 20:39:25] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-05-03 20:39:25] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-03 20:42:04] INFO     __main__ — Scan 20260503_204204_691722 started for target: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-03 20:42:04] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=%25&action=search (max depth=2)
+[2026-05-03 20:42:04] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-03 20:42:08] WARNING  scanner.crawler — Connection error: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-03 20:42:08] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-03 20:42:08] INFO     scanner.crawler — Crawl complete. 1 URLs found, 1 errors.
+[2026-05-03 20:42:12] INFO     scanner.forms — Form crawl complete. 0 form(s) found across 1 URL(s).
+[2026-05-03 20:42:12] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-05-03 20:42:12] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-03 20:43:23] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-05-03 20:43:23] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-05-03 20:43:23] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 09:14:55] INFO     __main__ — Scan 20260504_091455_317680 started for target: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 09:15:01] ERROR    core.utils — bWAPP connection failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /login.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x0000020F6DD30D70>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+[2026-05-04 09:15:01] ERROR    core.utils — Is bWAPP running? Start it with:
+[2026-05-04 09:15:01] ERROR    core.utils —   docker run --rm -d -p 8080:80 --name bwapp raesene/bwapp
+[2026-05-04 09:15:01] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=%25&action=search (max depth=2)
+[2026-05-04 09:15:01] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 09:15:05] WARNING  scanner.crawler — Connection error: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 09:15:05] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 09:15:05] INFO     scanner.crawler — Crawl complete. 1 URLs found, 1 errors.
+[2026-05-04 09:15:09] INFO     scanner.forms — Form crawl complete. 0 form(s) found across 1 URL(s).
+[2026-05-04 09:15:09] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-05-04 09:15:09] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 09:18:57] INFO     __main__ — Scan 20260504_091857_930786 started for target: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 09:19:03] ERROR    core.utils — bWAPP connection failed: HTTPConnectionPool(host='localhost', port=8080): Max retries exceeded with url: /login.php (Caused by NewConnectionError('<urllib3.connection.HTTPConnection object at 0x000002045AF10D70>: Failed to establish a new connection: [WinError 10061] No connection could be made because the target machine actively refused it'))
+[2026-05-04 09:19:03] ERROR    core.utils — Is bWAPP running? Start it with:
+[2026-05-04 09:19:03] ERROR    core.utils —   docker run --rm -d -p 8080:80 --name bwapp raesene/bwapp
+[2026-05-04 09:19:03] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=%25&action=search (max depth=2)
+[2026-05-04 09:19:03] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 09:19:07] WARNING  scanner.crawler — Connection error: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 09:19:07] INFO     scanner.crawler — Seed URL unreachable via crawler but added for scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 09:19:07] INFO     scanner.crawler — Crawl complete. 1 URLs found, 1 errors.
+[2026-05-04 09:19:12] INFO     scanner.forms — Form crawl complete. 0 form(s) found across 1 URL(s).
+[2026-05-04 09:19:12] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-05-04 09:19:12] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 09:21:21] INFO     scanner.sqli — SQLi scan complete. 0 vulnerability/vulnerabilities found.
+[2026-05-04 09:21:21] INFO     scanner.xss — XSS scan started. 1 URL(s) to probe.
+[2026-05-04 09:21:21] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 09:21:22] INFO     scanner.xss — XSS scan complete. 0 vulnerability/vulnerabilities found.
+[2026-05-04 09:21:22] INFO     ai.advisor — AI Advisor initialized. Claude API ready.
+[2026-05-04 09:21:27] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 09:21:27] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260504_092127.json
+[2026-05-04 09:21:27] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260504_092127.txt
+[2026-05-04 09:21:27] INFO     reporter.pdf_reporter — PDF report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260504_092127.pdf
+[2026-05-04 16:53:27] INFO     main — Auto-logging into bWAPP at http://localhost:8080...
+[2026-05-04 16:53:27] INFO     core.utils — bWAPP session created. Cookies: ['PHPSESSID', 'security_level']
+[2026-05-04 16:53:27] INFO     main — Auto-login successful: ['PHPSESSID', 'security_level']
+[2026-05-04 16:53:27] INFO     scanner.crawler — Using provided authenticated session for crawler.
+[2026-05-04 16:53:27] INFO     scanner.crawler — Starting crawl: http://localhost:8080/sqli_1.php?title=%25&action=search (max depth=2)
+[2026-05-04 16:53:27] INFO     scanner.crawler — [depth=0] Crawling: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 16:53:28] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/portal.php
+[2026-05-04 16:53:28] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/password_change.php
+[2026-05-04 16:53:29] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/user_extra.php
+[2026-05-04 16:53:30] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/security_level_set.php
+[2026-05-04 16:53:30] INFO     scanner.crawler — [depth=1] Crawling: http://localhost:8080/credits.php
+[2026-05-04 16:53:31] INFO     scanner.crawler — Crawl complete. 6 URLs found, 0 errors.
+[2026-05-04 16:53:31] INFO     scanner.forms — Form crawl complete. 17 form(s) found across 6 URL(s).
+[2026-05-04 16:53:31] INFO     scanner.sqli — SQLi scan started. 1 injectable URL(s) to probe.
+[2026-05-04 16:53:31] INFO     scanner.sqli — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 16:53:31] WARNING  scanner.sqli — [ERROR-BASED SQLi] http://localhost:8080/sqli_1.php?title=%25&action=search | param='title' | payload=''' | matched='you have an error in your sql syntax'
+[2026-05-04 16:53:31] INFO     scanner.sqli — SQLi scan complete. 1 vulnerability/vulnerabilities found.
+[2026-05-04 16:53:31] INFO     scanner.xss — XSS scan started. 6 URL(s) to probe.
+[2026-05-04 16:53:31] INFO     scanner.xss — Scanning: http://localhost:8080/sqli_1.php?title=%25&action=search
+[2026-05-04 16:53:31] WARNING  scanner.xss — [XSS - URL PARAM] http://localhost:8080/sqli_1.php?title=%25&action=search | param='title'
+[2026-05-04 16:53:31] WARNING  scanner.xss — [XSS - URL PARAM] http://localhost:8080/sqli_1.php?title=%25&action=search | param='action'
+[2026-05-04 16:53:31] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/sqli_1.php?title=%25&action=search | action='http://localhost:8080/sqli_1.php' fields='title'
+[2026-05-04 16:53:32] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/sqli_1.php?title=%25&action=search | action='http://localhost:8080/sqli_1.php' fields='security_level'
+[2026-05-04 16:53:32] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/sqli_1.php?title=%25&action=search | action='http://localhost:8080/sqli_1.php' fields='bug'
+[2026-05-04 16:53:32] INFO     scanner.xss — Scanning: http://localhost:8080/portal.php
+[2026-05-04 16:53:33] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/portal.php | action='http://localhost:8080/portal.php' fields='bug'
+[2026-05-04 16:53:33] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/portal.php | action='http://localhost:8080/portal.php' fields='security_level'
+[2026-05-04 16:53:33] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/portal.php | action='http://localhost:8080/portal.php' fields='bug'
+[2026-05-04 16:53:34] INFO     scanner.xss — Scanning: http://localhost:8080/password_change.php
+[2026-05-04 16:53:34] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/password_change.php | action='http://localhost:8080/password_change.php' fields='password_curr, password_new, password_conf'
+[2026-05-04 16:53:34] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/password_change.php | action='http://localhost:8080/password_change.php' fields='security_level'
+[2026-05-04 16:53:34] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/password_change.php | action='http://localhost:8080/password_change.php' fields='bug'
+[2026-05-04 16:53:35] INFO     scanner.xss — Scanning: http://localhost:8080/user_extra.php
+[2026-05-04 16:53:35] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/user_extra.php | action='http://localhost:8080/user_extra.php' fields='login, email, password, password_conf, secret'
+[2026-05-04 16:53:35] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/user_extra.php | action='http://localhost:8080/user_extra.php' fields='security_level'
+[2026-05-04 16:53:36] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/user_extra.php | action='http://localhost:8080/user_extra.php' fields='bug'
+[2026-05-04 16:53:36] INFO     scanner.xss — Scanning: http://localhost:8080/security_level_set.php
+[2026-05-04 16:53:36] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/security_level_set.php | action='http://localhost:8080/security_level_set.php' fields='security_level'
+[2026-05-04 16:53:37] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/security_level_set.php | action='http://localhost:8080/security_level_set.php' fields='security_level'
+[2026-05-04 16:53:37] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/security_level_set.php | action='http://localhost:8080/security_level_set.php' fields='bug'
+[2026-05-04 16:53:37] INFO     scanner.xss — Scanning: http://localhost:8080/credits.php
+[2026-05-04 16:53:38] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/credits.php | action='http://localhost:8080/credits.php' fields='security_level'
+[2026-05-04 16:53:38] WARNING  scanner.xss — [XSS - FORM] http://localhost:8080/credits.php | action='http://localhost:8080/credits.php' fields='bug'
+[2026-05-04 16:53:38] INFO     scanner.xss — XSS scan complete. 19 vulnerability/vulnerabilities found.
+[2026-05-04 16:53:38] INFO     scanner.auth_tester — Auth tester started.
+[2026-05-04 16:53:38] INFO     scanner.auth_tester — Found 1 login form(s).
+[2026-05-04 16:53:38] INFO     scanner.auth_tester — Testing default credentials on: http://localhost:8080/user_extra.php
+[2026-05-04 16:53:39] WARNING  scanner.auth_tester — [DEFAULT CREDS] http://localhost:8080/user_extra.php | user='admin' pass='admin'
+[2026-05-04 16:53:39] INFO     scanner.auth_tester — Testing username enumeration on: http://localhost:8080/user_extra.php
+[2026-05-04 16:53:39] INFO     scanner.auth_tester — Testing account lockout on: http://localhost:8080/user_extra.php
+[2026-05-04 16:53:40] INFO     scanner.auth_tester — Auth test complete. 1 finding(s).
+[2026-05-04 16:53:40] WARNING  scanner.plugins — Failed to load plugin 'base_plugin': name 'BasePlugin' is not defined
+[2026-05-04 16:53:40] WARNING  scanner.plugins — Failed to load plugin 'lfi_plugin': name 'BasePlugin' is not defined
+[2026-05-04 16:53:40] WARNING  scanner.plugins — Failed to load plugin 'my_plugin': name 'BasePlugin' is not defined
+[2026-05-04 16:53:40] WARNING  scanner.plugins — Failed to load plugin 'open_redirect_plugin': name 'BasePlugin' is not defined
+[2026-05-04 16:53:40] INFO     scanner.plugins — Plugin system ready. 0 plugin(s) loaded.
+[2026-05-04 16:53:40] INFO     scanner.port_scanner — Port scan started on 127.0.0.1 — 15 ports
+[2026-05-04 16:53:40] INFO     scanner.port_scanner — Open port found: 445 (SMB)
+[2026-05-04 16:53:40] INFO     scanner.port_scanner — Open port found: 8080 (HTTP-Alt)
+[2026-05-04 16:53:41] INFO     scanner.port_scanner — Port scan complete. 2 open port(s) found.
+[2026-05-04 16:53:41] INFO     ai.advisor — AI Advisor initialized. Claude API ready.
+[2026-05-04 16:53:41] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:42] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:42] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:43] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:43] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:44] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:44] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:45] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:46] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:46] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:47] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:47] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:48] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:48] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:51] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:51] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:52] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:52] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:52] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:53] ERROR    ai.advisor — API HTTP error 400: Bad Request
+[2026-05-04 16:53:53] INFO     reporter.json_reporter — JSON report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260504_165353.json
+[2026-05-04 16:53:53] INFO     reporter.txt_reporter — TXT report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260504_165353.txt
+[2026-05-04 16:53:53] INFO     reporter.pdf_reporter — PDF report saved: reports\wasp_localhost_8080_sqli_1.php_title__25_action_search_20260504_165353.pdf
