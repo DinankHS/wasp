@@ -15,6 +15,7 @@ Automated web vulnerability scanner with AI-assisted reporting.
 
 ## Quick Start
 pip install -r requirements.txt
+
 python main.py --target "http://localhost:8080" --auto-login --app bwapp
 
 ## Dashboard
