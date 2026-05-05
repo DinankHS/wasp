@@ -20,6 +20,7 @@ import os
 import importlib
 import inspect
 from core.logger import get_logger
+
 log = get_logger(__name__)
 
 
@@ -31,8 +32,12 @@ def load_plugins() -> list:
     Skips:
       - __init__.py itself
       - Files starting with underscore
+      - base_plugin.py (abstract base, not a real plugin)
       - Files without a class inheriting BasePlugin
     """
+    # ── Import BasePlugin first so subclasses can find it ─────────────────────
+    from scanner.plugins.base_plugin import BasePlugin
+
     plugins      = []
     plugins_dir  = os.path.dirname(os.path.abspath(__file__))
 
@@ -40,7 +45,11 @@ def load_plugins() -> list:
         # Only process Python files
         if not filename.endswith(".py"):
             continue
+        # Skip special files
         if filename.startswith("_"):
+            continue
+        # Skip the base class itself — it's not a real plugin
+        if filename == "base_plugin.py":
             continue
 
         module_name = filename[:-3]  # strip .py
