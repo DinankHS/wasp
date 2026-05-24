@@ -1,0 +1,261 @@
+{
+  "wasp_version": "1.0",
+  "target": "http://localhost/index.php",
+  "start_time": "2026-05-16T18:36:00.731315",
+  "end_time": "2026-05-16T18:36:32.333903",
+  "summary": {
+    "urls_crawled": 33,
+    "vulnerabilities": 21,
+    "open_ports": 0,
+    "errors": 0
+  },
+  "urls_crawled": [
+    "http://localhost/index.php",
+    "http://localhost/",
+    "http://localhost/instructions.php",
+    "http://localhost/setup.php",
+    "http://localhost/vulnerabilities/brute/",
+    "http://localhost/vulnerabilities/exec/",
+    "http://localhost/vulnerabilities/csrf/",
+    "http://localhost/vulnerabilities/fi/?page=include.php",
+    "http://localhost/vulnerabilities/upload/",
+    "http://localhost/vulnerabilities/captcha/",
+    "http://localhost/vulnerabilities/sqli/",
+    "http://localhost/vulnerabilities/sqli_blind/",
+    "http://localhost/vulnerabilities/weak_id/",
+    "http://localhost/vulnerabilities/xss_d/",
+    "http://localhost/vulnerabilities/xss_r/",
+    "http://localhost/vulnerabilities/xss_s/",
+    "http://localhost/vulnerabilities/csp/",
+    "http://localhost/vulnerabilities/javascript/",
+    "http://localhost/security.php",
+    "http://localhost/phpinfo.php",
+    "http://localhost/about.php",
+    "http://localhost/instructions.php?doc=readme",
+    "http://localhost/instructions.php?doc=PDF",
+    "http://localhost/instructions.php?doc=changelog",
+    "http://localhost/instructions.php?doc=copying",
+    "http://localhost/instructions.php?doc=PHPIDS-license",
+    "http://localhost/vulnerabilities/fi/?page=file1.php",
+    "http://localhost/vulnerabilities/fi/?page=file2.php",
+    "http://localhost/vulnerabilities/fi/?page=file3.php",
+    "http://localhost/security.php?phpids=on",
+    "http://localhost/security.php?test=%22><script>eval(window.name)</script>",
+    "http://localhost/ids_log.php",
+    "http://localhost/security.php?phpids=off"
+  ],
+  "vulnerabilities": [
+    {
+      "type": "SQL Injection (Form - Error-based)",
+      "url": "http://localhost/vulnerabilities/brute/",
+      "parameter": "username",
+      "payload": "'",
+      "severity": "HIGH",
+      "description": "Form field 'username' at 'http://localhost/vulnerabilities/brute/' is vulnerable to SQL injection. DB error 'you have an error in your sql syntax' found in response.",
+      "evidence": "you have an error in your sql syntax",
+      "remediation": ""
+    },
+    {
+      "type": "SQL Injection (Form - Error-based)",
+      "url": "http://localhost/vulnerabilities/sqli/",
+      "parameter": "id",
+      "payload": "'",
+      "severity": "HIGH",
+      "description": "Form field 'id' at 'http://localhost/vulnerabilities/sqli/' is vulnerable to SQL injection. DB error 'you have an error in your sql syntax' found in response.",
+      "evidence": "you have an error in your sql syntax",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (URL Parameter)",
+      "url": "http://localhost/instructions.php?doc=readme",
+      "parameter": "doc",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Parameter 'doc' reflects user input unescaped, allowing script injection via URL.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (URL Parameter)",
+      "url": "http://localhost/instructions.php?doc=copying",
+      "parameter": "doc",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Parameter 'doc' reflects user input unescaped, allowing script injection via URL.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (URL Parameter)",
+      "url": "http://localhost/instructions.php?doc=PDF",
+      "parameter": "doc",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Parameter 'doc' reflects user input unescaped, allowing script injection via URL.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (URL Parameter)",
+      "url": "http://localhost/instructions.php?doc=PHPIDS-license",
+      "parameter": "doc",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Parameter 'doc' reflects user input unescaped, allowing script injection via URL.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (URL Parameter)",
+      "url": "http://localhost/instructions.php?doc=changelog",
+      "parameter": "doc",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Parameter 'doc' reflects user input unescaped, allowing script injection via URL.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost/setup.php",
+      "parameter": "unknown",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost/setup.php' reflects field(s) 'unknown' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Weak/Default Credentials",
+      "url": "http://localhost/vulnerabilities/brute/",
+      "parameter": "username / password",
+      "payload": "admin / password",
+      "severity": "CRITICAL",
+      "description": "The application accepts default credentials 'admin' / 'password'. This allows unauthorized access without any exploitation.",
+      "evidence": "Login succeeded with admin:password",
+      "remediation": ""
+    },
+    {
+      "type": "CSRF — Missing Token",
+      "url": "http://localhost/vulnerabilities/exec/",
+      "parameter": "N/A",
+      "payload": "POST without CSRF token",
+      "severity": "HIGH",
+      "description": "The POST form at 'http://localhost/vulnerabilities/exec/' (from 'http://localhost/vulnerabilities/exec/') does not contain a CSRF token. Without a token, attackers can trick authenticated users into submitting this form from any website.",
+      "evidence": "POST form fields: ['ip', 'Submit'] — none match known CSRF token names",
+      "remediation": ""
+    },
+    {
+      "type": "CSRF — Missing Token",
+      "url": "http://localhost/vulnerabilities/captcha/",
+      "parameter": "N/A",
+      "payload": "POST without CSRF token",
+      "severity": "HIGH",
+      "description": "The POST form at 'http://localhost/vulnerabilities/captcha/' (from 'http://localhost/vulnerabilities/captcha/') does not contain a CSRF token. Without a token, attackers can trick authenticated users into submitting this form from any website.",
+      "evidence": "POST form fields: ['step', 'password_new', 'password_conf', 'Change'] — none match known CSRF token names",
+      "remediation": ""
+    },
+    {
+      "type": "CSRF — Missing Token",
+      "url": "http://localhost/vulnerabilities/xss_s/",
+      "parameter": "N/A",
+      "payload": "POST without CSRF token",
+      "severity": "HIGH",
+      "description": "The POST form at 'http://localhost/vulnerabilities/xss_s/' (from 'http://localhost/vulnerabilities/xss_s/') does not contain a CSRF token. Without a token, attackers can trick authenticated users into submitting this form from any website.",
+      "evidence": "POST form fields: ['txtName', 'mtxMessage', 'btnSign', 'btnClear'] — none match known CSRF token names",
+      "remediation": ""
+    },
+    {
+      "type": "CSRF — Token Not Validated",
+      "url": "http://localhost/vulnerabilities/javascript/",
+      "parameter": "token",
+      "payload": "WASP_FAKE_CSRF_TOKEN_12345_INVALID",
+      "severity": "HIGH",
+      "description": "The form at 'http://localhost/vulnerabilities/javascript/' has a CSRF token field ('token') but the server accepted a completely fake token value. The token exists in the HTML but is not validated server-side.",
+      "evidence": "Server returned HTTP 200 with fake token — no rejection detected",
+      "remediation": ""
+    },
+    {
+      "type": "CSRF — Token Not Validated",
+      "url": "http://localhost/security.php",
+      "parameter": "user_token",
+      "payload": "WASP_FAKE_CSRF_TOKEN_12345_INVALID",
+      "severity": "HIGH",
+      "description": "The form at 'http://localhost/security.php' has a CSRF token field ('user_token') but the server accepted a completely fake token value. The token exists in the HTML but is not validated server-side.",
+      "evidence": "Server returned HTTP 200 with fake token — no rejection detected",
+      "remediation": ""
+    },
+    {
+      "type": "CSRF — Token Not Validated",
+      "url": "http://localhost/security.php?phpids=on",
+      "parameter": "user_token",
+      "payload": "WASP_FAKE_CSRF_TOKEN_12345_INVALID",
+      "severity": "HIGH",
+      "description": "The form at 'http://localhost/security.php?phpids=on' has a CSRF token field ('user_token') but the server accepted a completely fake token value. The token exists in the HTML but is not validated server-side.",
+      "evidence": "Server returned HTTP 200 with fake token — no rejection detected",
+      "remediation": ""
+    },
+    {
+      "type": "CSRF — Token Not Validated",
+      "url": "http://localhost/security.php?phpids=off",
+      "parameter": "user_token",
+      "payload": "WASP_FAKE_CSRF_TOKEN_12345_INVALID",
+      "severity": "HIGH",
+      "description": "The form at 'http://localhost/security.php?phpids=off' has a CSRF token field ('user_token') but the server accepted a completely fake token value. The token exists in the HTML but is not validated server-side.",
+      "evidence": "Server returned HTTP 200 with fake token — no rejection detected",
+      "remediation": ""
+    },
+    {
+      "type": "Local File Inclusion (LFI)",
+      "url": "http://localhost/instructions.php?doc=readme",
+      "parameter": "doc",
+      "payload": "../../../etc/passwd",
+      "severity": "HIGH",
+      "description": "Parameter 'doc' is vulnerable to Local File Inclusion. Path traversal payload '../../../etc/passwd' exposed system file content.",
+      "evidence": "Matched signature: localhost",
+      "remediation": ""
+    },
+    {
+      "type": "Local File Inclusion (LFI)",
+      "url": "http://localhost/instructions.php?doc=PDF",
+      "parameter": "doc",
+      "payload": "../../../etc/passwd",
+      "severity": "HIGH",
+      "description": "Parameter 'doc' is vulnerable to Local File Inclusion. Path traversal payload '../../../etc/passwd' exposed system file content.",
+      "evidence": "Matched signature: localhost",
+      "remediation": ""
+    },
+    {
+      "type": "Local File Inclusion (LFI)",
+      "url": "http://localhost/instructions.php?doc=changelog",
+      "parameter": "doc",
+      "payload": "../../../etc/passwd",
+      "severity": "HIGH",
+      "description": "Parameter 'doc' is vulnerable to Local File Inclusion. Path traversal payload '../../../etc/passwd' exposed system file content.",
+      "evidence": "Matched signature: localhost",
+      "remediation": ""
+    },
+    {
+      "type": "Local File Inclusion (LFI)",
+      "url": "http://localhost/instructions.php?doc=copying",
+      "parameter": "doc",
+      "payload": "../../../etc/passwd",
+      "severity": "HIGH",
+      "description": "Parameter 'doc' is vulnerable to Local File Inclusion. Path traversal payload '../../../etc/passwd' exposed system file content.",
+      "evidence": "Matched signature: localhost",
+      "remediation": ""
+    },
+    {
+      "type": "Local File Inclusion (LFI)",
+      "url": "http://localhost/instructions.php?doc=PHPIDS-license",
+      "parameter": "doc",
+      "payload": "../../../etc/passwd",
+      "severity": "HIGH",
+      "description": "Parameter 'doc' is vulnerable to Local File Inclusion. Path traversal payload '../../../etc/passwd' exposed system file content.",
+      "evidence": "Matched signature: localhost",
+      "remediation": ""
+    }
+  ],
+  "open_ports": [],
+  "errors": []
+}

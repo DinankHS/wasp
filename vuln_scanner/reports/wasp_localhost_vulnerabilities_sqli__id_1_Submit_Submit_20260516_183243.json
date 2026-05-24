@@ -1,0 +1,39 @@
+{
+  "wasp_version": "1.0",
+  "target": "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit",
+  "start_time": "2026-05-16T18:32:42.564182",
+  "end_time": "2026-05-16T18:32:43.054755",
+  "summary": {
+    "urls_crawled": 1,
+    "vulnerabilities": 2,
+    "open_ports": 0,
+    "errors": 0
+  },
+  "urls_crawled": [
+    "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit"
+  ],
+  "vulnerabilities": [
+    {
+      "type": "SQL Injection (Error-based)",
+      "url": "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit",
+      "parameter": "id",
+      "payload": "'",
+      "severity": "HIGH",
+      "description": "The parameter 'id' is vulnerable to error-based SQL injection. DB error 'you have an error in your sql syntax' was reflected in the response.",
+      "evidence": "you have an error in your sql syntax",
+      "remediation": ""
+    },
+    {
+      "type": "SQL Injection (Form - Error-based)",
+      "url": "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit",
+      "parameter": "id",
+      "payload": "'",
+      "severity": "HIGH",
+      "description": "Form field 'id' at 'http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit' is vulnerable to SQL injection. DB error 'you have an error in your sql syntax' found in response.",
+      "evidence": "you have an error in your sql syntax",
+      "remediation": ""
+    }
+  ],
+  "open_ports": [],
+  "errors": []
+}

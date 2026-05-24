@@ -27,9 +27,9 @@ TOP_PORTS = [
 ]
 
 # ── Output settings ───────────────────────────────────────────────────────────
-OUTPUT_DIR   = "reports"
-LOG_DIR      = "logs"
-LOG_LEVEL    = "INFO"         # DEBUG | INFO | WARNING | ERROR
+OUTPUT_DIR = r"C:\wasp_reports"
+LOG_DIR    = os.path.join(os.path.dirname(os.path.abspath(__file__)), "logs")
+LOG_LEVEL  = "INFO"
 
 # ── Safety / scope guard ─────────────────────────────────────────────────────
 # The scanner will REFUSE to scan anything outside this scope.

@@ -1,0 +1,558 @@
+============================================================
+  WASP — Web Application Security Probe v1.0
+  Scan Report
+============================================================
+  Target    : http://localhost/index.php
+  Started   : 2026-05-16T18:40:05.470826
+  Finished  : 2026-05-16T18:40:39.504416
+============================================================
+
+SUMMARY
+----------------------------------------
+  URLs crawled    : 33
+  Vulnerabilities : 62
+  Open ports      : 0
+  Errors          : 0
+
+VULNERABILITIES
+----------------------------------------
+
+  [1] 🟠 SQL Injection (Form - Error-based)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/brute/
+       Parameter : username
+       Payload   : '
+       Evidence  : you have an error in your sql syntax
+       Details   : Form field 'username' at 'http://localhost/vulnerabilities/brute/' is vulnerable to SQL injection. DB error 'you have an error in your sql syntax' found in response.
+
+  [2] 🟠 SQL Injection (Form - Error-based)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/sqli/
+       Parameter : id
+       Payload   : '
+       Evidence  : you have an error in your sql syntax
+       Details   : Form field 'id' at 'http://localhost/vulnerabilities/sqli/' is vulnerable to SQL injection. DB error 'you have an error in your sql syntax' found in response.
+
+  [3] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/fi/?page=include.php
+       Parameter : page
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'page' reflects user input unescaped, allowing script injection via URL.
+
+  [4] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/brute/
+       Parameter : username, password
+       Payload   : '><script>alert('WASP-XSS')</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Form at 'http://localhost/vulnerabilities/brute/' reflects field(s) 'username, password' unescaped.
+
+  [5] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/csrf/
+       Parameter : password_new, password_conf
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost/vulnerabilities/csrf/' reflects field(s) 'password_new, password_conf' unescaped.
+
+  [6] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/captcha/
+       Parameter : password_new, password_conf
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost/vulnerabilities/captcha/' reflects field(s) 'password_new, password_conf' unescaped.
+
+  [7] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/sqli/
+       Parameter : id
+       Payload   : '><script>alert('WASP-XSS')</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Form at 'http://localhost/vulnerabilities/sqli/' reflects field(s) 'id' unescaped.
+
+  [8] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/upload/
+       Parameter : uploaded
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost/vulnerabilities/upload/' reflects field(s) 'uploaded' unescaped.
+
+  [9] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/sqli_blind/
+       Parameter : id
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost/vulnerabilities/sqli_blind/' reflects field(s) 'id' unescaped.
+
+  [10] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/exec/
+       Parameter : ip
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost/vulnerabilities/exec/' reflects field(s) 'ip' unescaped.
+
+  [11] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/xss_d/
+       Parameter : default
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Form at 'http://localhost/vulnerabilities/xss_d/' reflects field(s) 'default' unescaped.
+
+  [12] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/xss_r/
+       Parameter : name
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Full payload reflected: <script>alert("WASP-XSS")</script>
+       Details   : Form at 'http://localhost/vulnerabilities/xss_r/' reflects field(s) 'name' unescaped.
+
+  [13] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/vulnerabilities/xss_d/
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'Referer' reflected unescaped.
+
+  [14] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/setup.php
+       Parameter : unknown
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost/setup.php' reflects field(s) 'unknown' unescaped.
+
+  [15] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/vulnerabilities/xss_d/
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [16] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://localhost/instructions.php?doc=readme
+       Parameter : doc
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'doc' reflects user input unescaped, allowing script injection via URL.
+
+  [17] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/csp/
+       Parameter : include
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Full payload reflected: <script>alert("WASP-XSS")</script>
+       Details   : Form at 'http://localhost/vulnerabilities/csp/' reflects field(s) 'include' unescaped.
+
+  [18] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/vulnerabilities/xss_d/
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [19] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/security.php
+       Parameter : security
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Form at 'http://localhost/security.php' reflects field(s) 'security' unescaped.
+
+  [20] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/javascript/
+       Parameter : phrase
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Form at 'http://localhost/vulnerabilities/javascript/' reflects field(s) 'phrase' unescaped.
+
+  [21] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/security.php
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'Referer' reflected unescaped.
+
+  [22] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/xss_s/
+       Parameter : txtName, mtxMessage
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Full payload reflected: <script>alert("WASP-XSS")</script>
+       Details   : Form at 'http://localhost/vulnerabilities/xss_s/' reflects field(s) 'txtName, mtxMessage' unescaped.
+
+  [23] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/vulnerabilities/javascript/
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'Referer' reflected unescaped.
+
+  [24] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/security.php
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [25] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/vulnerabilities/xss_s/
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'Referer' reflected unescaped.
+
+  [26] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/vulnerabilities/javascript/
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [27] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://localhost/instructions.php?doc=changelog
+       Parameter : doc
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'doc' reflects user input unescaped, allowing script injection via URL.
+
+  [28] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/security.php
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [29] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://localhost/instructions.php?doc=PDF
+       Parameter : doc
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'doc' reflects user input unescaped, allowing script injection via URL.
+
+  [30] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/vulnerabilities/xss_s/
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [31] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://localhost/instructions.php?doc=PHPIDS-license
+       Parameter : doc
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'doc' reflects user input unescaped, allowing script injection via URL.
+
+  [32] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/vulnerabilities/javascript/
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [33] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://localhost/instructions.php?doc=copying
+       Parameter : doc
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'doc' reflects user input unescaped, allowing script injection via URL.
+
+  [34] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/vulnerabilities/xss_s/
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [35] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/fi/?page=file1.php
+       Parameter : page
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'page' reflects user input unescaped, allowing script injection via URL.
+
+  [36] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://localhost/security.php?phpids=on
+       Parameter : phpids
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Parameter 'phpids' reflects user input unescaped, allowing script injection via URL.
+
+  [37] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/fi/?page=file2.php
+       Parameter : page
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'page' reflects user input unescaped, allowing script injection via URL.
+
+  [38] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/vulnerabilities/fi/?page=file3.php
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Full payload reflected: http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Details   : Header 'Referer' reflected unescaped.
+
+  [39] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/security.php?test=%22><script>eval(window.name)</script>
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [40] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/vulnerabilities/fi/?page=file3.php
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Full payload reflected: WASP-Scanner/<script>alert(1)</script>
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [41] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/vulnerabilities/fi/?page=file3.php
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Full payload reflected: <script>alert(1)</script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [42] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/security.php?phpids=on
+       Parameter : security
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Form at 'http://localhost/security.php?phpids=on' reflects field(s) 'security' unescaped.
+
+  [43] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/security.php?phpids=on
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'Referer' reflected unescaped.
+
+  [44] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/security.php?phpids=on
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [45] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/security.php?phpids=on
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [46] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/phpinfo.php
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: alert(
+       Details   : Header 'Referer' reflected unescaped.
+
+  [47] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/phpinfo.php
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: alert(
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [48] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/phpinfo.php
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: alert(
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [49] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost/ids_log.php
+       Parameter : unknown
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost/ids_log.php' reflects field(s) 'unknown' unescaped.
+
+  [50] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/security.php?phpids=off
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'Referer' reflected unescaped.
+
+  [51] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/security.php?phpids=off
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [52] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://localhost/security.php?phpids=off
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [53] 🟠 Reflected XSS (Form - Mutated)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/xss_d/
+       Parameter : default
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Form field 'default' reflects mutated XSS payload unescaped, bypassing basic filters.
+
+  [54] 🟠 Reflected XSS (Form - Mutated)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/xss_r/
+       Parameter : name
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Full payload reflected: <script>alert("WASP-XSS")</script>
+       Details   : Form field 'name' reflects mutated XSS payload unescaped, bypassing basic filters.
+
+  [55] 🟠 Reflected XSS (Form - Mutated)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/xss_s/
+       Parameter : txtName
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Full payload reflected: <script>alert("WASP-XSS")</script>
+       Details   : Form field 'txtName' reflects mutated XSS payload unescaped, bypassing basic filters.
+
+  [56] 🟠 Reflected XSS (Form - Mutated)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/csp/
+       Parameter : include
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Full payload reflected: <script>alert("WASP-XSS")</script>
+       Details   : Form field 'include' reflects mutated XSS payload unescaped, bypassing basic filters.
+
+  [57] 🟠 Reflected XSS (Form - Mutated)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/javascript/
+       Parameter : phrase
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Form field 'phrase' reflects mutated XSS payload unescaped, bypassing basic filters.
+
+  [58] 🟠 Reflected XSS (Form - Mutated)
+       Severity  : HIGH
+       URL       : http://localhost/security.php?phpids=off
+       Parameter : security
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Form field 'security' reflects mutated XSS payload unescaped, bypassing basic filters.
+
+  [59] 🟠 Reflected XSS (Form - Mutated)
+       Severity  : HIGH
+       URL       : http://localhost/security.php
+       Parameter : security
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Form field 'security' reflects mutated XSS payload unescaped, bypassing basic filters.
+
+  [60] 🟠 Reflected XSS (Form - Mutated)
+       Severity  : HIGH
+       URL       : http://localhost/security.php?phpids=on
+       Parameter : security
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Form field 'security' reflects mutated XSS payload unescaped, bypassing basic filters.
+
+  [61] 🟠 Reflected XSS (Form - Mutated)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/brute/
+       Parameter : username
+       Payload   : '><script>alert('WASP-XSS')</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Form field 'username' reflects mutated XSS payload unescaped, bypassing basic filters.
+
+  [62] 🟠 Reflected XSS (Form - Mutated)
+       Severity  : HIGH
+       URL       : http://localhost/vulnerabilities/sqli/
+       Parameter : id
+       Payload   : '><script>alert('WASP-XSS')</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Form field 'id' reflects mutated XSS payload unescaped, bypassing basic filters.
+
+OPEN PORTS
+----------------------------------------
+  No open ports found.
+
+CRAWLED URLs
+----------------------------------------
+  http://localhost/index.php
+  http://localhost/
+  http://localhost/instructions.php
+  http://localhost/setup.php
+  http://localhost/vulnerabilities/brute/
+  http://localhost/vulnerabilities/exec/
+  http://localhost/vulnerabilities/csrf/
+  http://localhost/vulnerabilities/fi/?page=include.php
+  http://localhost/vulnerabilities/upload/
+  http://localhost/vulnerabilities/captcha/
+  http://localhost/vulnerabilities/sqli/
+  http://localhost/vulnerabilities/sqli_blind/
+  http://localhost/vulnerabilities/weak_id/
+  http://localhost/vulnerabilities/xss_d/
+  http://localhost/vulnerabilities/xss_r/
+  http://localhost/vulnerabilities/xss_s/
+  http://localhost/vulnerabilities/csp/
+  http://localhost/vulnerabilities/javascript/
+  http://localhost/security.php
+  http://localhost/phpinfo.php
+  http://localhost/about.php
+  http://localhost/instructions.php?doc=readme
+  http://localhost/instructions.php?doc=PDF
+  http://localhost/instructions.php?doc=changelog
+  http://localhost/instructions.php?doc=copying
+  http://localhost/instructions.php?doc=PHPIDS-license
+  http://localhost/vulnerabilities/fi/?page=file1.php
+  http://localhost/vulnerabilities/fi/?page=file2.php
+  http://localhost/vulnerabilities/fi/?page=file3.php
+  http://localhost/security.php?phpids=on
+  http://localhost/security.php?test=%22><script>eval(window.name)</script>
+  http://localhost/ids_log.php
+  http://localhost/security.php?phpids=off
+
+============================================================
+  Generated by WASP — For authorized testing only.
+============================================================

@@ -1,0 +1,18 @@
+{
+  "wasp_version": "1.0",
+  "target": "http://localhost/index.php",
+  "start_time": "2026-05-16T18:34:12.512591",
+  "end_time": "2026-05-16T18:34:12.651590",
+  "summary": {
+    "urls_crawled": 1,
+    "vulnerabilities": 0,
+    "open_ports": 0,
+    "errors": 0
+  },
+  "urls_crawled": [
+    "http://localhost/index.php"
+  ],
+  "vulnerabilities": [],
+  "open_ports": [],
+  "errors": []
+}

@@ -1,4 +1,27 @@
 # main.py
+# main.py — add this as the VERY FIRST lines, before everything else
+import logging
+
+_original_emit = logging.StreamHandler.emit
+
+def _safe_emit(self, record):
+    try:
+        _original_emit(self, record)
+    except OSError:
+        pass
+
+logging.StreamHandler.emit = _safe_emit
+
+_original_flush = logging.StreamHandler.flush
+
+def _safe_flush(self):
+    try:
+        _original_flush(self)
+    except OSError:
+        pass
+
+logging.StreamHandler.flush = _safe_flush
+
 """
 WASP — Web Application Security Probe v2.0
 Complete Phase 2 platform with all modules wired together.
@@ -19,6 +42,7 @@ import sys
 import os
 import logging
 import socket
+from datetime import datetime
 
 from config import OUTPUT_DIR, TOP_PORTS
 from core.logger import get_logger
@@ -33,8 +57,26 @@ from scanner.mutator      import PayloadMutator
 from scanner.auth_tester  import AuthTester
 from scanner.plugins      import load_plugins
 
-log = get_logger("main")
+# main.py — add this right after all imports, before anything else runs
 
+import logging
+
+class SafeStreamHandler(logging.StreamHandler):
+    def emit(self, record):
+        try:
+            super().emit(record)
+        except OSError:
+            pass
+
+# Replace all existing stream handlers on the root logger
+root = logging.getLogger()
+for handler in root.handlers[:]:
+    if isinstance(handler, logging.StreamHandler) and not isinstance(handler, logging.FileHandler):
+        root.removeHandler(handler)
+        root.addHandler(SafeStreamHandler())
+
+log = get_logger("main")
+DB_ENABLED = False
 
 # ── Argument parser ───────────────────────────────────────────────────────────
 
@@ -91,10 +133,15 @@ def load_cookie_file(path: str) -> dict:
     return cookies
 
 
-def deduplicate(findings: list) -> list:
-    seen, unique = set(), []
+def _deduplicate(findings: list) -> list:
+    seen   = set()
+    unique = []
     for v in findings:
-        key = (v.url, v.parameter, v.vuln_type)
+        # Normalize vuln_type — treat all XSS variants as same type
+        base_type = v.vuln_type.replace(" (Form - Mutated)", "").replace(" (Form Input)", "").replace(" (URL Parameter)", "").replace(" (HTTP Header)", "")
+        # Use only first field name if parameter contains multiple
+        first_param = v.parameter.split(",")[0].strip()
+        key = (v.url, base_type, first_param)
         if key not in seen:
             seen.add(key)
             unique.append(v)
@@ -108,7 +155,6 @@ def banner() -> None:
 ║        For authorized testing only. Use responsibly.         ║
 ╚══════════════════════════════════════════════════════════════╝
     """)
-
 
 def print_divider(char="─", width=60) -> None:
     print("  " + char * width)
@@ -201,11 +247,11 @@ def run_sqli(
     print("      Status       : Running...\n")
 
     scanner  = SQLiScanner(cookies=cookies, session=session)
-    findings = deduplicate(scanner.scan(urls))
+    findings = _deduplicate(scanner.scan(urls))
 
     # Form-based SQLi with mutation
     if forms and hasattr(scanner, "scan_forms"):
-        form_findings = deduplicate(scanner.scan_forms(forms))
+        form_findings = _deduplicate(scanner.scan_forms(forms))
         findings += [f for f in form_findings if f not in findings]
 
     for vuln in findings:
@@ -235,11 +281,11 @@ def run_xss(
     print("      Status       : Running...\n")
 
     scanner  = XSSScanner(cookies=cookies, session=session)
-    findings = deduplicate(scanner.scan(urls))
+    findings = _deduplicate(scanner.scan(urls))
 
     # Form-based XSS with mutation
     if forms and hasattr(scanner, "scan_forms_with_mutation"):
-        form_findings = deduplicate(scanner.scan_forms_with_mutation(forms))
+        form_findings = _deduplicate(scanner.scan_forms_with_mutation(forms))
         findings += [f for f in form_findings if f not in findings]
 
     for vuln in findings:
@@ -268,7 +314,7 @@ def run_auth_tester(
     print("      Status  : Running...\n")
 
     tester   = AuthTester(session=session, cookies=cookies)
-    findings = deduplicate(tester.scan(urls, forms))
+    findings = _deduplicate(tester.scan(urls, forms))
 
     for vuln in findings:
         scan_result.add_vuln(vuln)
@@ -306,7 +352,7 @@ def run_plugins(
         plugin.cookies = session.cookies if session else {}
         plugin.setup()
         try:
-            findings = deduplicate(plugin.scan(urls, forms))
+            findings = _deduplicate(plugin.scan(urls, forms))
             for vuln in findings:
                 scan_result.add_vuln(vuln)
                 print(f"      [{plugin.name}] {vuln.vuln_type}")
@@ -410,6 +456,14 @@ def run_ai_and_reports(
             print(f"      PDF  : {path}")
         except Exception as e:
             log.warning(f"PDF report error: {e}")
+        
+    if output in ("csv", "all"):
+        try:
+            from reporter import csv_reporter
+            path = csv_reporter.generate(scan_result)
+            print(f"      CSV  : {path}")
+        except Exception as e:
+            log.warning(f"CSV report error: {e}")
 
 
 # ── Main ──────────────────────────────────────────────────────────────────────
@@ -418,8 +472,36 @@ def main() -> None:
     banner()
     args = parse_args()
 
-    # ── Dashboard mode ────────────────────────────────────────────────────────
+    # Strip stream handlers early if launching dashboard
     if args.dashboard:
+        for name, logger in logging.Logger.manager.loggerDict.items():
+            if isinstance(logger, logging.Logger):
+                logger.handlers = [
+                    h for h in logger.handlers
+                    if isinstance(h, logging.FileHandler)
+                ]
+
+    # ── Database setup ────────────────────────────────────────────────────────
+    global DB_ENABLED
+    try:
+        from db import init_pool, run_migrations
+        from db.queries import create_scan, save_results
+        init_pool()
+        run_migrations()
+        DB_ENABLED = True
+        log.info("Database connected.")
+    except Exception as _db_err:
+        DB_ENABLED = False
+        log.debug("Database unavailable: %s", _db_err)
+
+    if args.dashboard:
+        # Strip stream handlers before Flask takes over stdout
+        for name, logger in logging.Logger.manager.loggerDict.items():
+            if isinstance(logger, logging.Logger):
+                logger.handlers = [
+                    h for h in logger.handlers
+                    if isinstance(h, logging.FileHandler)
+                ]
         print(f"  Launching dashboard on http://localhost:{args.port}")
         print("  Press Ctrl+C to stop.\n")
         os.chdir(os.path.dirname(os.path.abspath(__file__)))

@@ -1,4 +1,3 @@
-# core/logger.py
 """
 Centralized logger. Import get_logger() in every module.
 
@@ -10,20 +9,37 @@ Usage:
 
 import logging
 import os
+import sys
 from config import LOG_DIR, LOG_LEVEL
 
 
+class SafeStreamHandler(logging.StreamHandler):
+    """Swallows OSError so background threads never crash on a closed stream."""
+    def emit(self, record):
+        try:
+            super().emit(record)
+        except OSError:
+            pass
+
+    def flush(self):
+        try:
+            super().flush()
+        except OSError:
+            pass
+
+
 def get_logger(name: str) -> logging.Logger:
-    """
-    Returns a named logger that writes to both console and file.
-    Call once per module with get_logger(__name__).
-    """
     os.makedirs(LOG_DIR, exist_ok=True)
 
     logger = logging.getLogger(name)
 
-    # Avoid adding duplicate handlers if get_logger is called multiple times
-    if logger.handlers:
+    # Replace any old StreamHandlers with SafeStreamHandler
+    for h in logger.handlers[:]:
+        if type(h) is logging.StreamHandler:  # exact type, not subclass
+            logger.removeHandler(h)
+
+    # If handlers already set up correctly, return as-is
+    if any(isinstance(h, SafeStreamHandler) for h in logger.handlers):
         return logger
 
     logger.setLevel(getattr(logging, LOG_LEVEL.upper(), logging.INFO))
@@ -33,14 +49,13 @@ def get_logger(name: str) -> logging.Logger:
         datefmt="%Y-%m-%d %H:%M:%S"
     )
 
-    # Console handler — you see this in your terminal
-    ch = logging.StreamHandler()
+    ch = SafeStreamHandler()
     ch.setFormatter(fmt)
     logger.addHandler(ch)
 
-    # File handler — persists across runs
-    fh = logging.FileHandler(os.path.join(LOG_DIR, "scanner.log"))
-    fh.setFormatter(fmt)
-    logger.addHandler(fh)
+    if not any(isinstance(h, logging.FileHandler) for h in logger.handlers):
+        fh = logging.FileHandler(os.path.join(LOG_DIR, "scanner.log"))
+        fh.setFormatter(fmt)
+        logger.addHandler(fh)
 
     return logger

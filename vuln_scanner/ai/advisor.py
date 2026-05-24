@@ -1,6 +1,5 @@
-# ai/advisor.py
 """
-WASP AI Advisor — Phase 2
+WASP AI Advisor
 Uses Claude API to analyze vulnerability findings and generate:
   1. Plain-English explanation of each vulnerability
   2. Severity assessment with CVSS-like scoring rationale

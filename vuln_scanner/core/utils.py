@@ -42,8 +42,9 @@ def is_valid_url(url: str) -> bool:
         return False
 
 
-def sanitize_filename(name: str) -> str:
-    return re.sub(r"[^\w\-_.]", "_", name)
+def sanitize_filename(name: str, max_length: int = 80) -> str:
+    sanitized = re.sub(r"[^\w\-_.]", "_", name)
+    return sanitized[:max_length]
 
 
 def build_cookie_jar(cookies: dict, url: str = "http://localhost"):

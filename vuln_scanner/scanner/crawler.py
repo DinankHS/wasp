@@ -1,4 +1,3 @@
-# scanner/crawler.py
 """
 WASP Crawler — Phase 1
 Discovers all reachable URLs from a seed URL.

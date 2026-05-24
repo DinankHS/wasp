@@ -1,0 +1,18 @@
+{
+  "wasp_version": "1.0",
+  "target": "http://testphp.vulnweb.com",
+  "start_time": "2026-05-16T18:56:44.904823",
+  "end_time": "2026-05-16T18:57:45.166470",
+  "summary": {
+    "urls_crawled": 1,
+    "vulnerabilities": 0,
+    "open_ports": 0,
+    "errors": 0
+  },
+  "urls_crawled": [
+    "http://testphp.vulnweb.com"
+  ],
+  "vulnerabilities": [],
+  "open_ports": [],
+  "errors": []
+}

@@ -1,0 +1,40 @@
+{
+  "wasp_version": "1.0",
+  "target": "http://zero.webappsecurity.com",
+  "start_time": "2026-05-16T18:48:35.530604",
+  "end_time": "2026-05-16T18:48:47.947180",
+  "summary": {
+    "urls_crawled": 2,
+    "vulnerabilities": 2,
+    "open_ports": 0,
+    "errors": 0
+  },
+  "urls_crawled": [
+    "http://zero.webappsecurity.com",
+    "http://zero.webappsecurity.com/index.html"
+  ],
+  "vulnerabilities": [
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://zero.webappsecurity.com/search.html",
+      "parameter": "searchTerm",
+      "payload": "<script>alert(\"WASP-XSS\")</script>",
+      "severity": "HIGH",
+      "description": "Form at 'http://zero.webappsecurity.com/search.html' reflects field(s) 'searchTerm' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: alert(",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form - Mutated)",
+      "url": "http://zero.webappsecurity.com/search.html",
+      "parameter": "searchTerm",
+      "payload": "<script>alert(\"WASP-XSS\")</script>",
+      "severity": "HIGH",
+      "description": "Form field 'searchTerm' reflects mutated XSS payload unescaped, bypassing basic filters.",
+      "evidence": "Dangerous tag/attribute reflected: alert(",
+      "remediation": ""
+    }
+  ],
+  "open_ports": [],
+  "errors": []
+}

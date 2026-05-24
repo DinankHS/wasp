@@ -25,11 +25,11 @@ class FormCrawler:
     Returns structured form data ready for injection testing.
 
     Each returned form dict has:
-        action          — URL the form submits to
-        method          — "get" or "post"
-        fields          — dict of {name: {type, value, injectable}}
+        action            — URL the form submits to
+        method            — "get" or "post"
+        fields            — dict of {name: {type, value, injectable}}
         injectable_fields — list of field names safe to inject into
-        source_url      — page where this form was found
+        source_url        — page where this form was found
     """
 
     def __init__(
@@ -38,7 +38,6 @@ class FormCrawler:
         cookies: dict | None = None,
     ):
         if session is not None:
-            # Reuse authenticated session — preserves login state
             self.session = session
         else:
             self.session = requests.Session()
@@ -51,15 +50,32 @@ class FormCrawler:
     def extract_forms(self, urls: list[str]) -> list[dict]:
         """
         Extract all forms from a list of URLs.
-        Returns a flat list of form dicts ready for injection.
+        Returns a deduplicated flat list of form dicts ready for injection.
+
+        Deduplication key: (action, method, frozenset of injectable field names)
+        This prevents the same form appearing on 40 pages (e.g. a site-wide
+        search bar) from being scanned 40 times.
         """
-        all_forms = []
+        all_forms  = []
+        seen_forms: set[tuple] = set()
 
         for url in urls:
             forms = self._extract_from_url(url)
-            all_forms.extend(forms)
-            if forms:
-                log.debug(f"Found {len(forms)} form(s) on {url}")
+            for form in forms:
+                # Build a dedup key from the form's identity
+                key = (
+                    form["action"],
+                    form["method"],
+                    frozenset(form["injectable_fields"]),
+                )
+                if key not in seen_forms:
+                    seen_forms.add(key)
+                    all_forms.append(form)
+                else:
+                    log.debug(
+                        f"Skipping duplicate form: {form['action']} "
+                        f"fields={form['injectable_fields']}"
+                    )
 
         log.info(
             f"Form crawl complete. {len(all_forms)} form(s) found "
@@ -79,7 +95,7 @@ class FormCrawler:
         Args:
             form         — form dict from extract_forms()
             payload      — the injection payload to test
-            target_field — if set, only inject into this field
+            target_field — if set, only inject into this field;
                            if None, inject into all injectable fields
 
         Returns response text or None on error.
@@ -88,13 +104,10 @@ class FormCrawler:
         for name, info in form["fields"].items():
             if info["injectable"]:
                 if target_field is None or name == target_field:
-                    # Inject payload into this field
                     data[name] = payload
                 else:
-                    # Keep original value for other injectable fields
                     data[name] = info["value"] or "test"
             else:
-                # Never inject into non-injectable fields (submit, hidden, etc.)
                 data[name] = info["value"]
 
         try:
@@ -113,8 +126,8 @@ class FormCrawler:
                     allow_redirects=True,
                 )
 
-            # Check for login redirect — session may have expired
-            if "login" in response.url and "login" not in form["action"]:
+            # Detect login redirect — only flag genuine login page redirects
+            if self._is_login_redirect(response, form["action"]):
                 log.debug("Form submission redirected to login — session expired?")
                 return None
 
@@ -129,6 +142,28 @@ class FormCrawler:
 
     # ── Private helpers ───────────────────────────────────────────────────────
 
+    def _is_login_redirect(self, response, original_action: str) -> bool:
+        """
+        Returns True only if the response is a genuine login page redirect.
+        Avoids false-positives on pages that mention 'login' in content.
+        """
+        final_url   = response.url.lower()
+        action_url  = original_action.lower()
+
+        login_markers = ["login.php", "/login?", "/login/"]
+        for marker in login_markers:
+            if marker in final_url and marker not in action_url:
+                return True
+
+        body = response.text[:2000].lower()
+        if (
+            'name="user_token"' in body
+            or 'action="login.php"' in body
+        ):
+            return True
+
+        return False
+
     def _extract_from_url(self, url: str) -> list[dict]:
         """Fetch a single page and extract all its forms."""
         try:
@@ -138,7 +173,6 @@ class FormCrawler:
                 allow_redirects=True,
             )
 
-            # Skip non-HTML responses
             content_type = response.headers.get("Content-Type", "")
             if "text/html" not in content_type:
                 return []
@@ -187,7 +221,6 @@ class FormCrawler:
         elif not action.startswith("http"):
             action = urljoin(base_url, action)
 
-        # Normalize method
         if method not in ("get", "post"):
             method = "get"
 
@@ -202,17 +235,13 @@ class FormCrawler:
             if not name:
                 continue
 
-            # Determine if this field is safe to inject into
-            # We never inject into: submit buttons, file uploads,
-            # checkboxes, radio buttons, or hidden CSRF tokens
             is_injectable = ftype not in (
                 "submit", "button", "image",
                 "reset", "file", "checkbox",
                 "radio", "hidden",
             )
 
-            # Special case: some apps put real user-input fields
-            # as hidden — include them if name suggests user data
+            # Special case: hidden fields with user-data names are injectable
             if ftype == "hidden":
                 user_data_hints = [
                     "id", "user", "name", "search",
@@ -227,7 +256,6 @@ class FormCrawler:
                 "injectable": is_injectable,
             }
 
-        # Skip forms with no fields at all
         if not fields:
             return None
 
@@ -236,7 +264,6 @@ class FormCrawler:
             if info["injectable"]
         ]
 
-        # Skip forms with no injectable fields
         if not injectable_fields:
             return None
 

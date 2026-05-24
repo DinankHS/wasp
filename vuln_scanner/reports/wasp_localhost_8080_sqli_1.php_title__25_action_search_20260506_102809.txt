@@ -1,0 +1,323 @@
+============================================================
+  WASP — Web Application Security Probe v1.0
+  Scan Report
+============================================================
+  Target    : http://localhost:8080/sqli_1.php?title=%25&action=search
+  Started   : 2026-05-06T10:27:36.809161
+  Finished  : 2026-05-06T10:27:56.679553
+============================================================
+
+SUMMARY
+----------------------------------------
+  URLs crawled    : 6
+  Vulnerabilities : 23
+  Open ports      : 2
+  Errors          : 0
+
+VULNERABILITIES
+----------------------------------------
+
+  [1] 🟠 SQL Injection (Error-based)
+       Severity  : HIGH
+       URL       : http://localhost:8080/sqli_1.php?title=%25&action=search
+       Parameter : title
+       Payload   : '
+       Evidence  : you have an error in your sql syntax
+       Details   : The parameter 'title' is vulnerable to error-based SQL injection. DB error 'you have an error in your sql syntax' was reflected in the response.
+       Fix       : 1. Use parameterized queries or prepared statements.
+2. Apply input validation and whitelist allowed characters.
+3. Use an ORM with built-in protection.
+4. Apply the principle of least privilege to DB accounts.
+5. Enable a WAF to filter malicious input.
+
+  [2] 🟠 SQL Injection (Form - Error-based)
+       Severity  : HIGH
+       URL       : http://localhost:8080/sqli_1.php
+       Parameter : title
+       Payload   : '
+       Evidence  : you have an error in your sql syntax
+       Details   : Form field 'title' at 'http://localhost:8080/sqli_1.php' is vulnerable to SQL injection. DB error 'you have an error in your sql syntax' found in response.
+       Fix       : 1. Use parameterized queries or prepared statements.
+2. Apply input validation and whitelist allowed characters.
+3. Use an ORM with built-in protection.
+4. Apply the principle of least privilege to DB accounts.
+5. Enable a WAF to filter malicious input.
+
+  [3] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://localhost:8080/sqli_1.php?title=%25&action=search
+       Parameter : title
+       Payload   : '><script>alert('WASP-XSS')</script>
+       Evidence  : Full payload reflected: '><script>alert('WASP-XSS')</script>
+       Details   : Parameter 'title' reflects user input unescaped, allowing script injection via URL.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [4] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://localhost:8080/sqli_1.php?title=%25&action=search
+       Parameter : action
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'action' reflects user input unescaped, allowing script injection via URL.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [5] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/sqli_1.php
+       Parameter : title
+       Payload   : '><script>alert('WASP-XSS')</script>
+       Evidence  : Full payload reflected: '><script>alert('WASP-XSS')</script>
+       Details   : Form at 'http://localhost:8080/sqli_1.php' reflects field(s) 'title' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [6] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/credits.php
+       Parameter : security_level
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost:8080/credits.php' reflects field(s) 'security_level' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [7] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/portal.php
+       Parameter : bug
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost:8080/portal.php' reflects field(s) 'bug' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [8] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/password_change.php
+       Parameter : password_curr, password_new, password_conf
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost:8080/password_change.php' reflects field(s) 'password_curr, password_new, password_conf' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [9] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/user_extra.php
+       Parameter : login, email, password, password_conf, secret
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost:8080/user_extra.php' reflects field(s) 'login, email, password, password_conf, secret' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [10] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/security_level_set.php
+       Parameter : security_level
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost:8080/security_level_set.php' reflects field(s) 'security_level' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [11] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/sqli_1.php
+       Parameter : security_level
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost:8080/sqli_1.php' reflects field(s) 'security_level' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [12] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/credits.php
+       Parameter : bug
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost:8080/credits.php' reflects field(s) 'bug' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [13] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/portal.php
+       Parameter : security_level
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost:8080/portal.php' reflects field(s) 'security_level' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [14] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/sqli_1.php
+       Parameter : bug
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost:8080/sqli_1.php' reflects field(s) 'bug' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [15] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/user_extra.php
+       Parameter : security_level
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost:8080/user_extra.php' reflects field(s) 'security_level' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [16] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/password_change.php
+       Parameter : security_level
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost:8080/password_change.php' reflects field(s) 'security_level' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [17] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/security_level_set.php
+       Parameter : bug
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost:8080/security_level_set.php' reflects field(s) 'bug' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [18] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/user_extra.php
+       Parameter : bug
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost:8080/user_extra.php' reflects field(s) 'bug' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [19] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://localhost:8080/password_change.php
+       Parameter : bug
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://localhost:8080/password_change.php' reflects field(s) 'bug' unescaped.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [20] 🟠 Reflected XSS (Form - Mutated)
+       Severity  : HIGH
+       URL       : http://localhost:8080/sqli_1.php
+       Parameter : title
+       Payload   : '><script>alert('WASP-XSS')</script>
+       Evidence  : Full payload reflected: '><script>alert('WASP-XSS')</script>
+       Details   : Form field 'title' reflects mutated XSS payload unescaped, bypassing basic filters.
+       Fix       : 1. Encode all user-supplied output using context-aware encoding.
+2. Implement Content Security Policy (CSP) headers.
+3. Use HTTPOnly and Secure flags on session cookies.
+4. Validate and sanitize all input server-side.
+5. Use a template engine that auto-escapes by default.
+
+  [21] 🔴 Weak/Default Credentials
+       Severity  : CRITICAL
+       URL       : http://localhost:8080/user_extra.php
+       Parameter : login / password
+       Payload   : admin / admin
+       Evidence  : Login succeeded with admin:admin
+       Details   : The application accepts default credentials 'admin' / 'admin'. This allows unauthorized access without any exploitation.
+       Fix       : Consult OWASP guidelines for this vulnerability type.
+
+  [22] 🟠 CSRF — Missing Token
+       Severity  : HIGH
+       URL       : http://localhost:8080/password_change.php
+       Parameter : N/A
+       Payload   : POST without CSRF token
+       Evidence  : POST form fields: ['password_curr', 'password_new', 'password_conf'] — none match known CSRF token names
+       Details   : The POST form at 'http://localhost:8080/password_change.php' (from 'http://localhost:8080/password_change.php') does not contain a CSRF token. Without a token, attackers can trick authenticated users into submitting this form from any website.
+       Fix       : Consult OWASP guidelines for this vulnerability type.
+
+  [23] 🟠 CSRF — Missing Token
+       Severity  : HIGH
+       URL       : http://localhost:8080/user_extra.php
+       Parameter : N/A
+       Payload   : POST without CSRF token
+       Evidence  : POST form fields: ['login', 'email', 'password', 'password_conf', 'secret', 'mail_activation'] — none match known CSRF token names
+       Details   : The POST form at 'http://localhost:8080/user_extra.php' (from 'http://localhost:8080/user_extra.php') does not contain a CSRF token. Without a token, attackers can trick authenticated users into submitting this form from any website.
+       Fix       : Consult OWASP guidelines for this vulnerability type.
+
+OPEN PORTS
+----------------------------------------
+  445    open       SMB
+  8080   open       HTTP-Alt
+
+CRAWLED URLs
+----------------------------------------
+  http://localhost:8080/sqli_1.php?title=%25&action=search
+  http://localhost:8080/portal.php
+  http://localhost:8080/password_change.php
+  http://localhost:8080/user_extra.php
+  http://localhost:8080/security_level_set.php
+  http://localhost:8080/credits.php
+
+============================================================
+  Generated by WASP — For authorized testing only.
+============================================================

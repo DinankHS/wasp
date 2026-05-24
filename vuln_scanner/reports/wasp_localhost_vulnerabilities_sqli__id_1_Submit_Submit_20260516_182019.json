@@ -1,0 +1,18 @@
+{
+  "wasp_version": "1.0",
+  "target": "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit",
+  "start_time": "2026-05-16T18:20:17.670397",
+  "end_time": "2026-05-16T18:20:19.880010",
+  "summary": {
+    "urls_crawled": 1,
+    "vulnerabilities": 0,
+    "open_ports": 0,
+    "errors": 0
+  },
+  "urls_crawled": [
+    "http://localhost/vulnerabilities/sqli/?id=1&Submit=Submit"
+  ],
+  "vulnerabilities": [],
+  "open_ports": [],
+  "errors": []
+}

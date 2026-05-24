@@ -1,0 +1,224 @@
+{
+  "wasp_version": "1.0",
+  "target": "http://localhost:8080/sqli_1.php?title=%25&action=search",
+  "start_time": "2026-05-07T08:15:22.458332",
+  "end_time": "2026-05-07T08:15:42.874610",
+  "summary": {
+    "urls_crawled": 6,
+    "vulnerabilities": 20,
+    "open_ports": 0,
+    "errors": 0
+  },
+  "urls_crawled": [
+    "http://localhost:8080/sqli_1.php?title=%25&action=search",
+    "http://localhost:8080/portal.php",
+    "http://localhost:8080/password_change.php",
+    "http://localhost:8080/user_extra.php",
+    "http://localhost:8080/security_level_set.php",
+    "http://localhost:8080/credits.php"
+  ],
+  "vulnerabilities": [
+    {
+      "type": "SQL Injection (Error-based)",
+      "url": "http://localhost:8080/sqli_1.php?title=%25&action=search",
+      "parameter": "title",
+      "payload": "'",
+      "severity": "HIGH",
+      "description": "The parameter 'title' is vulnerable to error-based SQL injection. DB error 'you have an error in your sql syntax' was reflected in the response.",
+      "evidence": "you have an error in your sql syntax",
+      "remediation": ""
+    },
+    {
+      "type": "SQL Injection (Form - Error-based)",
+      "url": "http://localhost:8080/sqli_1.php",
+      "parameter": "title",
+      "payload": "'",
+      "severity": "HIGH",
+      "description": "Form field 'title' at 'http://localhost:8080/sqli_1.php' is vulnerable to SQL injection. DB error 'you have an error in your sql syntax' found in response.",
+      "evidence": "you have an error in your sql syntax",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (URL Parameter)",
+      "url": "http://localhost:8080/sqli_1.php?title=%25&action=search",
+      "parameter": "title",
+      "payload": "'><script>alert('WASP-XSS')</script>",
+      "severity": "HIGH",
+      "description": "Parameter 'title' reflects user input unescaped, allowing script injection via URL.",
+      "evidence": "Full payload reflected: '><script>alert('WASP-XSS')</script>",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (URL Parameter)",
+      "url": "http://localhost:8080/sqli_1.php?title=%25&action=search",
+      "parameter": "action",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Parameter 'action' reflects user input unescaped, allowing script injection via URL.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/sqli_1.php",
+      "parameter": "title",
+      "payload": "'><script>alert('WASP-XSS')</script>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/sqli_1.php' reflects field(s) 'title' unescaped.",
+      "evidence": "Full payload reflected: '><script>alert('WASP-XSS')</script>",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/password_change.php",
+      "parameter": "password_curr, password_new, password_conf",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/password_change.php' reflects field(s) 'password_curr, password_new, password_conf' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/portal.php",
+      "parameter": "bug",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/portal.php' reflects field(s) 'bug' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/security_level_set.php",
+      "parameter": "security_level",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/security_level_set.php' reflects field(s) 'security_level' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/user_extra.php",
+      "parameter": "login, email, password, password_conf, secret",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/user_extra.php' reflects field(s) 'login, email, password, password_conf, secret' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/credits.php",
+      "parameter": "security_level",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/credits.php' reflects field(s) 'security_level' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/sqli_1.php",
+      "parameter": "security_level",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/sqli_1.php' reflects field(s) 'security_level' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/password_change.php",
+      "parameter": "security_level",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/password_change.php' reflects field(s) 'security_level' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/portal.php",
+      "parameter": "security_level",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/portal.php' reflects field(s) 'security_level' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/credits.php",
+      "parameter": "bug",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/credits.php' reflects field(s) 'bug' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/user_extra.php",
+      "parameter": "security_level",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/user_extra.php' reflects field(s) 'security_level' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/sqli_1.php",
+      "parameter": "bug",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/sqli_1.php' reflects field(s) 'bug' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/password_change.php",
+      "parameter": "bug",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/password_change.php' reflects field(s) 'bug' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/security_level_set.php",
+      "parameter": "bug",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/security_level_set.php' reflects field(s) 'bug' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form Input)",
+      "url": "http://localhost:8080/user_extra.php",
+      "parameter": "bug",
+      "payload": "<img src=x onerror=alert(\"WASP-XSS\")>",
+      "severity": "HIGH",
+      "description": "Form at 'http://localhost:8080/user_extra.php' reflects field(s) 'bug' unescaped.",
+      "evidence": "Dangerous tag/attribute reflected: <img",
+      "remediation": ""
+    },
+    {
+      "type": "Reflected XSS (Form - Mutated)",
+      "url": "http://localhost:8080/sqli_1.php",
+      "parameter": "title",
+      "payload": "'><script>alert('WASP-XSS')</script>",
+      "severity": "HIGH",
+      "description": "Form field 'title' reflects mutated XSS payload unescaped, bypassing basic filters.",
+      "evidence": "Full payload reflected: '><script>alert('WASP-XSS')</script>",
+      "remediation": ""
+    }
+  ],
+  "open_ports": [],
+  "errors": []
+}

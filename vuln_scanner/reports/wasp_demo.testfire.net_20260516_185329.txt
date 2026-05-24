@@ -1,0 +1,623 @@
+============================================================
+  WASP — Web Application Security Probe v1.0
+  Scan Report
+============================================================
+  Target    : http://demo.testfire.net
+  Started   : 2026-05-16T18:50:38.252462
+  Finished  : 2026-05-16T18:53:29.496291
+============================================================
+
+SUMMARY
+----------------------------------------
+  URLs crawled    : 50
+  Vulnerabilities : 68
+  Open ports      : 0
+  Errors          : 0
+
+VULNERABILITIES
+----------------------------------------
+
+  [1] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/search.jsp
+       Parameter : query
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Full payload reflected: <script>alert("WASP-XSS")</script>
+       Details   : Form at 'http://demo.testfire.net/search.jsp' reflects field(s) 'query' unescaped.
+
+  [2] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/sendFeedback
+       Parameter : name, email_addr, subject, comments
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Full payload reflected: <script>alert("WASP-XSS")</script>
+       Details   : Form at 'http://demo.testfire.net/sendFeedback' reflects field(s) 'name, email_addr, subject, comments' unescaped.
+
+  [3] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=personal.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [4] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=inside.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [5] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=personal_deposit.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [6] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=business.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [7] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=inside_contact.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [8] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=personal_checking.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [9] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=personal_loans.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [10] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=personal_cards.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [11] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=personal_investments.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [12] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/doLogin
+       Parameter : uid, passw
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://demo.testfire.net/doLogin' reflects field(s) 'uid, passw' unescaped.
+
+  [13] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=personal_other.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [14] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=business_lending.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [15] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=business_deposit.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [16] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=business_cards.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [17] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=business_insurance.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [18] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=business_retirement.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [19] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=business_other.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [20] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=inside_about.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [21] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=inside_investor.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [22] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=inside_press.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [23] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=inside_careers.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [24] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=personal_savings.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [25] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=privacy.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [26] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=security.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [27] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/disclaimer.htm?url=http://www.netscape.com
+       Parameter : url
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Parameter 'url' reflects user input unescaped, allowing script injection via URL.
+
+  [28] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/disclaimer.htm?url=http://www.microsoft.com
+       Parameter : url
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Parameter 'url' reflects user input unescaped, allowing script injection via URL.
+
+  [29] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/swagger/index.html
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'Referer' reflected unescaped.
+
+  [30] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/status_check.jsp
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'Referer' reflected unescaped.
+
+  [31] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/swagger/index.html
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [32] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/disclaimer.htm?url=http://www.netscape.com
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'Referer' reflected unescaped.
+
+  [33] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/status_check.jsp
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [34] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/disclaimer.htm?url=http://www.microsoft.com
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'Referer' reflected unescaped.
+
+  [35] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/swagger/index.html
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [36] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/disclaimer.htm?url=http://www.netscape.com
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [37] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/status_check.jsp
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [38] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/disclaimer.htm?url=http://www.microsoft.com
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [39] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/disclaimer.htm?url=http://www.netscape.com
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [40] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/disclaimer.htm?url=http://www.microsoft.com
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [41] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=inside_community.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [42] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/doSubscribe
+       Parameter : txtEmail
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://demo.testfire.net/doSubscribe' reflects field(s) 'txtEmail' unescaped.
+
+  [43] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/high_yield_investments.htm
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'Referer' reflected unescaped.
+
+  [44] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/subscribe.jsp
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'Referer' reflected unescaped.
+
+  [45] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/high_yield_investments.htm
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [46] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/subscribe.jsp
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [47] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/high_yield_investments.htm
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [48] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=inside_executives.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [49] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=pr/20061109.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [50] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/subscribe.jsp
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [51] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=pr/20061005.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [52] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=pr/20060928.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [53] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=pr/20060921.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [54] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=pr/20060817.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [55] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=pr/20060720.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [56] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=pr/20060518.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [57] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=pr/20060413.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [58] 🟠 Reflected XSS (Form Input)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/admin/doLogin
+       Parameter : uid, passw
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Form at 'http://demo.testfire.net/admin/doLogin' reflects field(s) 'uid, passw' unescaped.
+
+  [59] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=inside_jobs.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [60] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=inside_benefits.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [61] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=inside_internships.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [62] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/index.jsp?content=inside_trainee.htm
+       Parameter : content
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'content' reflects user input unescaped, allowing script injection via URL.
+
+  [63] 🟠 Reflected XSS (URL Parameter)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/survey_questions.jsp?step=a
+       Parameter : step
+       Payload   : <img src=x onerror=alert("WASP-XSS")>
+       Evidence  : Dangerous tag/attribute reflected: <img
+       Details   : Parameter 'step' reflects user input unescaped, allowing script injection via URL.
+
+  [64] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/index.jsp?content=inside_jobs.htm
+       Parameter : Referer
+       Payload   : http://WASP-XSS-TEST.com/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'Referer' reflected unescaped.
+
+  [65] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/index.jsp?content=inside_jobs.htm
+       Parameter : User-Agent
+       Payload   : WASP-Scanner/<script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'User-Agent' reflected unescaped.
+
+  [66] 🟡 Reflected XSS (HTTP Header)
+       Severity  : MEDIUM
+       URL       : http://demo.testfire.net/index.jsp?content=inside_jobs.htm
+       Parameter : X-Forwarded-For
+       Payload   : <script>alert(1)</script>
+       Evidence  : Dangerous tag/attribute reflected: <script>
+       Details   : Header 'X-Forwarded-For' reflected unescaped.
+
+  [67] 🟠 Reflected XSS (Form - Mutated)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/search.jsp
+       Parameter : query
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Full payload reflected: <script>alert("WASP-XSS")</script>
+       Details   : Form field 'query' reflects mutated XSS payload unescaped, bypassing basic filters.
+
+  [68] 🟠 Reflected XSS (Form - Mutated)
+       Severity  : HIGH
+       URL       : http://demo.testfire.net/sendFeedback
+       Parameter : name
+       Payload   : <script>alert("WASP-XSS")</script>
+       Evidence  : Full payload reflected: <script>alert("WASP-XSS")</script>
+       Details   : Form field 'name' reflects mutated XSS payload unescaped, bypassing basic filters.
+
+OPEN PORTS
+----------------------------------------
+  No open ports found.
+
+CRAWLED URLs
+----------------------------------------
+  http://demo.testfire.net
+  http://demo.testfire.net/index.jsp
+  http://demo.testfire.net/login.jsp
+  http://demo.testfire.net/index.jsp?content=inside_contact.htm
+  http://demo.testfire.net/feedback.jsp
+  http://demo.testfire.net/index.jsp?content=personal.htm
+  http://demo.testfire.net/index.jsp?content=business.htm
+  http://demo.testfire.net/index.jsp?content=inside.htm
+  http://demo.testfire.net/index.jsp?content=personal_deposit.htm
+  http://demo.testfire.net/index.jsp?content=personal_checking.htm
+  http://demo.testfire.net/index.jsp?content=personal_loans.htm
+  http://demo.testfire.net/index.jsp?content=personal_cards.htm
+  http://demo.testfire.net/index.jsp?content=personal_investments.htm
+  http://demo.testfire.net/index.jsp?content=personal_other.htm
+  http://demo.testfire.net/index.jsp?content=business_deposit.htm
+  http://demo.testfire.net/index.jsp?content=business_lending.htm
+  http://demo.testfire.net/index.jsp?content=business_cards.htm
+  http://demo.testfire.net/index.jsp?content=business_insurance.htm
+  http://demo.testfire.net/index.jsp?content=business_retirement.htm
+  http://demo.testfire.net/index.jsp?content=business_other.htm
+  http://demo.testfire.net/index.jsp?content=inside_about.htm
+  http://demo.testfire.net/index.jsp?content=inside_investor.htm
+  http://demo.testfire.net/index.jsp?content=inside_press.htm
+  http://demo.testfire.net/index.jsp?content=inside_careers.htm
+  http://demo.testfire.net/subscribe.jsp
+  http://demo.testfire.net/index.jsp?content=personal_savings.htm
+  http://demo.testfire.net/index.jsp?content=privacy.htm
+  http://demo.testfire.net/survey_questions.jsp
+  http://demo.testfire.net/index.jsp?content=security.htm
+  http://demo.testfire.net/status_check.jsp
+  http://demo.testfire.net/swagger/index.html
+  http://demo.testfire.net/disclaimer.htm?url=http://www.netscape.com
+  http://demo.testfire.net/disclaimer.htm?url=http://www.microsoft.com
+  http://demo.testfire.net/index.jsp?content=inside_community.htm
+  http://demo.testfire.net/admin/clients.xls
+  http://demo.testfire.net/high_yield_investments.htm
+  http://demo.testfire.net/index.jsp?content=inside_executives.htm
+  http://demo.testfire.net/index.jsp?content=pr/20061109.htm
+  http://demo.testfire.net/index.jsp?content=pr/20061005.htm
+  http://demo.testfire.net/index.jsp?content=pr/20060928.htm
+  http://demo.testfire.net/index.jsp?content=pr/20060921.htm
+  http://demo.testfire.net/index.jsp?content=pr/20060817.htm
+  http://demo.testfire.net/index.jsp?content=pr/20060720.htm
+  http://demo.testfire.net/index.jsp?content=pr/20060518.htm
+  http://demo.testfire.net/index.jsp?content=pr/20060413.htm
+  http://demo.testfire.net/index.jsp?content=inside_jobs.htm
+  http://demo.testfire.net/index.jsp?content=inside_benefits.htm
+  http://demo.testfire.net/index.jsp?content=inside_internships.htm
+  http://demo.testfire.net/index.jsp?content=inside_trainee.htm
+  http://demo.testfire.net/survey_questions.jsp?step=a
+
+============================================================
+  Generated by WASP — For authorized testing only.
+============================================================
