@@ -133,19 +133,9 @@ def load_cookie_file(path: str) -> dict:
     return cookies
 
 
-def _deduplicate(findings: list) -> list:
-    seen   = set()
-    unique = []
-    for v in findings:
-        # Normalize vuln_type — treat all XSS variants as same type
-        base_type = v.vuln_type.replace(" (Form - Mutated)", "").replace(" (Form Input)", "").replace(" (URL Parameter)", "").replace(" (HTTP Header)", "")
-        # Use only first field name if parameter contains multiple
-        first_param = v.parameter.split(",")[0].strip()
-        key = (v.url, base_type, first_param)
-        if key not in seen:
-            seen.add(key)
-            unique.append(v)
-    return unique
+def deduplicate(findings: list) -> list:
+    from core.deduplicator import deduplicate as _dedup
+    return _dedup(findings, aggressive=True)
 
 
 def banner() -> None:
@@ -247,11 +237,11 @@ def run_sqli(
     print("      Status       : Running...\n")
 
     scanner  = SQLiScanner(cookies=cookies, session=session)
-    findings = _deduplicate(scanner.scan(urls))
+    findings = deduplicate(scanner.scan(urls))
 
     # Form-based SQLi with mutation
     if forms and hasattr(scanner, "scan_forms"):
-        form_findings = _deduplicate(scanner.scan_forms(forms))
+        form_findings = deduplicate(scanner.scan_forms(forms))
         findings += [f for f in form_findings if f not in findings]
 
     for vuln in findings:
@@ -281,11 +271,11 @@ def run_xss(
     print("      Status       : Running...\n")
 
     scanner  = XSSScanner(cookies=cookies, session=session)
-    findings = _deduplicate(scanner.scan(urls))
+    findings = deduplicate(scanner.scan(urls))
 
     # Form-based XSS with mutation
     if forms and hasattr(scanner, "scan_forms_with_mutation"):
-        form_findings = _deduplicate(scanner.scan_forms_with_mutation(forms))
+        form_findings = deduplicate(scanner.scan_forms_with_mutation(forms))
         findings += [f for f in form_findings if f not in findings]
 
     for vuln in findings:
@@ -314,7 +304,7 @@ def run_auth_tester(
     print("      Status  : Running...\n")
 
     tester   = AuthTester(session=session, cookies=cookies)
-    findings = _deduplicate(tester.scan(urls, forms))
+    findings = deduplicate(tester.scan(urls, forms))
 
     for vuln in findings:
         scan_result.add_vuln(vuln)
@@ -352,7 +342,7 @@ def run_plugins(
         plugin.cookies = session.cookies if session else {}
         plugin.setup()
         try:
-            findings = _deduplicate(plugin.scan(urls, forms))
+            findings = deduplicate(plugin.scan(urls, forms))
             for vuln in findings:
                 scan_result.add_vuln(vuln)
                 print(f"      [{plugin.name}] {vuln.vuln_type}")

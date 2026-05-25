@@ -1,13 +1,14 @@
 """
 WASP AI Advisor
-Uses Claude API to analyze vulnerability findings and generate:
+Uses Google Gemini API to analyze vulnerability findings and generate:
   1. Plain-English explanation of each vulnerability
   2. Severity assessment with CVSS-like scoring rationale
   3. Step-by-step remediation advice
   4. Code examples showing the fix
   5. Executive summary for the full scan
 
-Requires ANTHROPIC_API_KEY in .env file.
+Requires GEMINI_API_KEY in .env file.
+Get a free key at: https://aistudio.google.com
 """
 
 import os
@@ -24,25 +25,25 @@ log = get_logger(__name__)
 
 class AIAdvisor:
     """
-    Wraps the Claude API to provide intelligent vulnerability analysis.
+    Wraps the Google Gemini API to provide intelligent vulnerability analysis.
     Falls back gracefully if API key is missing or quota exceeded.
     """
 
-    MODEL    = "claude-haiku-4-5-20251001"   # fastest + cheapest model
-    MAX_TOKENS = 1024
-    RETRY_DELAY = 2   # seconds between retries on rate limit
+    MODEL       = "gemini-1.5-flash"  # free tier, fast
+    MAX_TOKENS  = 1024
+    RETRY_DELAY = 2  # seconds between retries on rate limit
 
     def __init__(self):
-        self.api_key = os.getenv("ANTHROPIC_API_KEY", "")
+        self.api_key = os.getenv("GEMINI_API_KEY", "")
         self.enabled = bool(self.api_key)
 
         if not self.enabled:
             log.warning(
-                "ANTHROPIC_API_KEY not set. "
+                "GEMINI_API_KEY not set. "
                 "AI analysis disabled. Add key to .env file."
             )
         else:
-            log.info("AI Advisor initialized. Claude API ready.")
+            log.info("AI Advisor initialized. Gemini API ready.")
 
     # ── Public API ────────────────────────────────────────────────────────────
 
@@ -61,7 +62,7 @@ class AIAdvisor:
         if not self.enabled:
             return self._fallback_analysis(vuln)
 
-        prompt = self._build_vuln_prompt(vuln)
+        prompt   = self._build_vuln_prompt(vuln)
         response = self._call_api(prompt)
 
         if response is None:
@@ -77,7 +78,7 @@ class AIAdvisor:
         if not self.enabled:
             return self._fallback_summary(scan_result)
 
-        prompt = self._build_summary_prompt(scan_result)
+        prompt   = self._build_summary_prompt(scan_result)
         response = self._call_api(prompt, max_tokens=1500)
 
         if response is None:
@@ -102,7 +103,6 @@ class AIAdvisor:
             log.info(f"  Analyzing finding {i}/{total}: {vuln.vuln_type}")
             analysis = self.analyze_vulnerability(vuln)
             vuln.remediation = analysis.get("remediation", "")
-            # Small delay to avoid rate limiting
             if i < total:
                 time.sleep(0.5)
 
@@ -134,7 +134,7 @@ Respond with this exact JSON structure (no markdown, no extra text):
 }}"""
 
     def _build_summary_prompt(self, scan_result: ScanResult) -> str:
-        vuln_summary = ""
+        vuln_summary    = ""
         severity_counts = {}
 
         for vuln in scan_result.vulnerabilities:
@@ -171,47 +171,57 @@ C-level audience. Cover: (1) overall risk posture, (2) key findings,
         retries: int = 2,
     ) -> str | None:
         """
-        Call the Claude API with retry logic.
+        Call the Gemini API with retry logic.
         Returns response text or None on failure.
         """
         import urllib.request
         import urllib.error
 
+        url = (
+            f"https://generativelanguage.googleapis.com/v1beta/models/"
+            f"{self.MODEL}:generateContent?key={self.api_key}"
+        )
+
         headers = {
-            "Content-Type":      "application/json",
-            "X-API-Key":         self.api_key,
-            "anthropic-version": "2023-06-01",
+            "Content-Type": "application/json",
         }
 
         body = json.dumps({
-            "model":      self.MODEL,
-            "max_tokens": max_tokens,
-            "messages":   [{"role": "user", "content": prompt}],
+            "contents": [
+                {
+                    "parts": [{"text": prompt}]
+                }
+            ],
+            "generationConfig": {
+                "maxOutputTokens": max_tokens,
+                "temperature":     0.2,
+            },
         }).encode("utf-8")
 
         for attempt in range(retries + 1):
             try:
                 req = urllib.request.Request(
-                    "https://api.anthropic.com/v1/messages",
+                    url,
                     data=body,
                     headers=headers,
                     method="POST",
                 )
                 with urllib.request.urlopen(req, timeout=30) as resp:
                     data = json.loads(resp.read().decode("utf-8"))
-                    return data["content"][0]["text"]
+                    return data["candidates"][0]["content"]["parts"][0]["text"]
 
             except urllib.error.HTTPError as e:
+                error_body = e.read().decode("utf-8") if e.fp else ""
                 if e.code == 429:
                     log.warning(f"Rate limited. Waiting {self.RETRY_DELAY}s...")
                     time.sleep(self.RETRY_DELAY)
-                elif e.code == 401:
-                    log.error("Invalid API key. Check your .env file.")
+                elif e.code == 400:
+                    log.error(f"Bad request: {error_body[:200]}")
+                    return None
+                elif e.code == 403:
+                    log.error("Invalid GEMINI_API_KEY. Check your .env file.")
                     self.enabled = False
                     return None
-                elif e.code == 529:
-                    log.warning("API overloaded. Waiting...")
-                    time.sleep(self.RETRY_DELAY * 2)
                 else:
                     log.error(f"API HTTP error {e.code}: {e.reason}")
                     return None
@@ -233,11 +243,10 @@ C-level audience. Cover: (1) overall risk posture, (2) key findings,
         vuln: Vulnerability,
     ) -> dict:
         """
-        Parse JSON response from Claude.
+        Parse JSON response from Gemini.
         Falls back to raw response if JSON parsing fails.
         """
         try:
-            # Strip any accidental markdown fences
             clean = response.strip()
             if clean.startswith("```"):
                 clean = clean.split("```")[1]
@@ -326,13 +335,11 @@ C-level audience. Cover: (1) overall risk posture, (2) key findings,
             },
         }
 
-        # Match template by vuln type
         for key, template in templates.items():
             if key.lower() in vuln.vuln_type.lower():
                 template["cvss_score"] = self._estimate_cvss(vuln)
                 return template
 
-        # Generic fallback
         return {
             "explanation":  f"{vuln.vuln_type} was detected at {vuln.url}.",
             "impact":       "Review the finding manually to assess impact.",

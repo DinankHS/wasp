@@ -252,7 +252,7 @@ class XSSScanner:
                 value = inp.get("value", "")
                 if not name:
                     continue
-                if itype in ("hidden","submit","button","image","reset"):
+                if itype in ("hidden", "submit", "button", "image", "reset", "select"):
                     data[name] = value
                 elif itype == "checkbox":
                     data[name] = "on"
@@ -261,6 +261,9 @@ class XSSScanner:
                     injected_fields.append(name)
 
             if not data:
+                continue
+
+            if not injected_fields:
                 continue
 
             response_text = self._submit_form(action, method, data)
@@ -339,11 +342,17 @@ class XSSScanner:
 
             method = form_tag.get("method", "get").lower()
             inputs = []
-            for tag in form_tag.find_all(["input","textarea","select"]):
+            for tag in form_tag.find_all(["input", "textarea", "select"]):
+            # select elements have no type attr — tag name identifies them
+                if tag.name == "select":
+                    ftype = "select"
+                else:
+                    ftype = tag.get("type", "text").lower()
+
                 inputs.append({
-                    "name":  tag.get("name", ""),
-                    "type":  tag.get("type", "text"),
-                    "value": tag.get("value", ""),
+                "name":  tag.get("name", ""),
+                "type":  ftype,
+                "value": tag.get("value", ""),
                 })
 
             if inputs:

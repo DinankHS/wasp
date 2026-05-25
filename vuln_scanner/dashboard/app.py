@@ -572,18 +572,8 @@ def _run_scan_thread(
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
 def _deduplicate(findings: list) -> list:
-    seen   = set()
-    unique = []
-    for v in findings:
-        # Normalize vuln_type — treat all XSS variants as same type
-        base_type = v.vuln_type.replace(" (Form - Mutated)", "").replace(" (Form Input)", "").replace(" (URL Parameter)", "").replace(" (HTTP Header)", "")
-        # Use only first field name if parameter contains multiple
-        first_param = v.parameter.split(",")[0].strip()
-        key = (v.url, base_type, first_param)
-        if key not in seen:
-            seen.add(key)
-            unique.append(v)
-    return unique
+    from core.deduplicator import deduplicate
+    return deduplicate(findings, aggressive=True)
 
 
 def _serialize_result(result: ScanResult, scan: dict) -> dict:
